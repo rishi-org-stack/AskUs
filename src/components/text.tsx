@@ -7,13 +7,17 @@ interface Props {
     large?: boolean;
     medium?: boolean;
     small?: boolean;
+    bold?: boolean;
+    weight?: string;
+    normal?: boolean;
 }
 function Text(props: Props) {
     return (
         <RnText style={[{
             fontSize: props.large && large || props.medium && medium || small,
-            color: props.color
-        }]}>
+            color: props.color,
+            fontWeight: props.bold && 'bold' || props.normal && 'normal' || '600',
+        },]}>
             {props.content}
         </RnText>
     )

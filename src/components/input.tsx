@@ -1,18 +1,37 @@
 import React from 'react'
 import { Text, TextInput } from 'react-native'
+interface inputProps {
+    content: string;
+    contentColor?: string;
+    backgroundColor?: string;
+    height?: number
+    width?: number;
+    radius?: number;
+    style?: object;
+    flex?: number;
+}
 
-function Input() {
+function Input(props: inputProps) {
     return (
         <TextInput
-            style={{
-                backgroundColor: "red",
-                height: 60,
-                width: 400, borderRadius: 20
-            }}
+            placeholder={props.content}
+            style={[{
+                backgroundColor: props.backgroundColor,
+                height: props.height,
+                width: props.width,
+                borderRadius: props.radius,
+                color: props.contentColor,
+                flex: props.flex,
+
+            }, props.style]}
         >
-            <Text >ok</Text>
+            {/* <Wrapper > */}
+            {/* <Text style={{ paddingLeft: 50 }}>{props.content}</Text> */}
+            {/* </Wrapper> */}
+
         </TextInput>
+
     )
 }
 
-export default Input
+export default Input;

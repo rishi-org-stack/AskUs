@@ -7,7 +7,9 @@ interface Props {
     right?: boolean;
     flex?: number;
     backgoundColor?: string;
+    margin?: number;
     children?: React.ReactNode;
+    style?: object;
 }
 export default function Wrapper(props: Props) {
     return (
@@ -16,7 +18,8 @@ export default function Wrapper(props: Props) {
             &&
             styles.row,
             props.center
-            && styles.center, { flex: props.flex, backgroundColor: props.backgoundColor }
+            && styles.center, { flex: props.flex, backgroundColor: props.backgoundColor, margin: props.margin },
+            props.style
         ]} >
             {props.children}
         </ View>

@@ -1,0 +1,4 @@
+what is layout?
+    a layout basically defines a set of component arranged in a particular manner.
+    multiple layout can be arranged to create a bigger layout
+    

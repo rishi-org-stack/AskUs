@@ -1,22 +1,29 @@
 import React from 'react'
-import { Text, TextInput } from 'react-native'
+import { KeyboardTypeOptions, Text, TextInput } from 'react-native'
 interface inputProps {
-    content: string;
+    content?: string;
     contentColor?: string;
-    backgroundColor?: string;
+    placeholderColor?: string;
+    type?: KeyboardTypeOptions;
+    // ref?: React.RefObject<TextInput>;
+    // backgroundColor?: string;
     height?: number
     width?: number;
     radius?: number;
     style?: object;
     flex?: number;
+    maxLength?: number;
+    onChangeText?: (text: string) => void;
 }
 
-function Input(props: inputProps) {
+const Input = React.forwardRef<TextInput, inputProps>((props, ref) => {
+    // const ok = React.useRef<TextInput>(null)
     return (
         <TextInput
-            placeholder={props.content}
+            ref={ref}
+            placeholderTextColor={props.placeholderColor}
             style={[{
-                backgroundColor: props.backgroundColor,
+                // backgroundColor: "red",//props.backgroundColor,
                 height: props.height,
                 width: props.width,
                 borderRadius: props.radius,
@@ -24,6 +31,10 @@ function Input(props: inputProps) {
                 flex: props.flex,
 
             }, props.style]}
+            onChangeText={props.onChangeText}
+            // onChangeText={() => ok.current.focus()}
+            maxLength={props.maxLength}
+            keyboardType={props.type}
         >
             {/* <Wrapper > */}
             {/* <Text style={{ paddingLeft: 50 }}>{props.content}</Text> */}
@@ -32,6 +43,6 @@ function Input(props: inputProps) {
         </TextInput>
 
     )
-}
+});
 
 export default Input;

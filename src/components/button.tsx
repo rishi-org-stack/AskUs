@@ -7,6 +7,8 @@ interface Props {
     right?: boolean;
     flex?: number;
     backgoundColor?: string;
+    height?: number;
+    width?: number;
     children?: React.ReactNode;
     onPress?: () => void
 
@@ -18,7 +20,7 @@ function Button(props: Props) {
             &&
             styles.row,
             props.center
-            && styles.center, { flex: props.flex, backgroundColor: props.backgoundColor }
+            && styles.center, { flex: props.flex, backgroundColor: props.backgoundColor, height: props.height, borderRadius: 20, width: props.width }
         ]} onPress={props.onPress}>
             <Wrapper>
                 {props.children}

@@ -23,6 +23,8 @@ import {
 } from '@react-navigation/native';
 import Button from './src/app/components/button';
 import EmailScreen from './src/app/module/auth/otp';
+import AuthRoute from './src/app/router/auth';
+import DetailScreen from './src/app/module/user/details';
 //TODO:cerate email screen
 const App = () => {
   return (
@@ -33,7 +35,9 @@ const App = () => {
 
 
       </Wrapper> */}
-      <EmailScreen />
+      {/* <EmailScreen /> */}
+      {/* <AuthRoute /> */}
+      <DetailScreen />
     </NavigationContainer>
 
     // <View>

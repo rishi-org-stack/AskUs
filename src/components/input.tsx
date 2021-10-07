@@ -12,6 +12,8 @@ interface inputProps {
     radius?: number;
     style?: object;
     flex?: number;
+    marginR?: number;
+    marginL?: number;
     maxLength?: number;
     onChangeText?: (text: string) => void;
 }
@@ -21,6 +23,7 @@ const Input = React.forwardRef<TextInput, inputProps>((props, ref) => {
     return (
         <TextInput
             ref={ref}
+            placeholder={props.content}
             placeholderTextColor={props.placeholderColor}
             style={[{
                 // backgroundColor: "red",//props.backgroundColor,

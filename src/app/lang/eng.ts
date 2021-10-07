@@ -1,6 +1,8 @@
 const langEng = {
     submit: 'Submit',
-    next: 'Next'
+    next: 'Next',
+    doctor: 'Doctor',
+    patient: 'Patient'
 }
 
 export default langEng;

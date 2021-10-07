@@ -19,6 +19,7 @@ function Button(props: Props) {
             props.row
             &&
             styles.row,
+
             props.center
             && styles.center, { flex: props.flex, backgroundColor: props.backgoundColor, height: props.height, borderRadius: 20, width: props.width }
         ]} onPress={props.onPress}>

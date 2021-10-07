@@ -19,4 +19,16 @@ function EmailIcon({ color }: Props): ReactElement {
     )
 }
 
-export default EmailIcon;
+function RightIcon({ color }: Props): ReactElement {
+    return (
+        <Image
+            source={
+                require('../asset/arrowRight.png')
+            }
+            style={{
+                tintColor: color
+            }}
+        />
+    )
+}
+export default { EmailIcon, RightIcon };

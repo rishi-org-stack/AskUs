@@ -16,6 +16,7 @@ function Text(props: Props) {
         <RnText style={[{
             fontSize: props.large && large || props.medium && medium || small,
             color: props.color,
+            textAlign: 'center',
             fontWeight: props.bold && 'bold' || props.normal && 'normal' || '600',
         },]}>
             {props.content}

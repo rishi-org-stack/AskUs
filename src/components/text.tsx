@@ -2,7 +2,7 @@ import React from 'react';
 import { Text as RnText } from 'react-native';
 
 interface Props {
-    content: string;
+    children?: React.ReactChildren|string;
     color?: string;
     large?: boolean;
     medium?: boolean;
@@ -10,16 +10,23 @@ interface Props {
     bold?: boolean;
     weight?: string;
     normal?: boolean;
+    marginT?:number;
+    marginB?:number;
+    lines?:number
 }
 function Text(props: Props) {
     return (
         <RnText style={[{
             fontSize: props.large && large || props.medium && medium || small,
-            color: props.color,
+            color: props.color ==  undefined?'white':props.color,
             textAlign: 'center',
             fontWeight: props.bold && 'bold' || props.normal && 'normal' || '600',
-        },]}>
-            {props.content}
+            marginTop:props.marginT,
+            marginBottom:props.marginB
+        },]}
+        numberOfLines={props.lines}
+        >
+            {props.children}
         </RnText>
     )
 }

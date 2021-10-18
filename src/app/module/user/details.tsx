@@ -1,11 +1,10 @@
 import React from 'react'
-import { Icon, Wrapper } from '../../../components';
+import {  Wrapper } from '../../../components';
 import { colors } from '../../theme';
 import Button from '../../components/button'
 import Input from '../../components/input'
 import langEng from './../../lang/eng';
-import { Dimensions, Keyboard, ScrollView, Text } from 'react-native';
-import { tSExternalModuleReference } from '@babel/types';
+import { Dimensions, Keyboard, KeyboardAvoidingView } from 'react-native';
 
 interface Props {
 
@@ -35,6 +34,7 @@ const DetailScreen = (props: Props) => {
         };
     }, []);
     return (
+
         <Wrapper flex={1} backgoundColor={colors.background}>
             <Wrapper flex={1}>
 
@@ -62,17 +62,17 @@ const DetailScreen = (props: Props) => {
                     </Wrapper>
                 </Wrapper>
                 <Wrapper flex={7} center>
+                    <KeyboardAvoidingView>
 
-                    {/* <Text> */}
-                    {/* Inputs will be here */}
-                    {/* </Text> */}
-                    {
-                        Doc ? <Doctor /> : <Patient />
-                    }
+                        {
+                            Doc ? <Doctor /> : <Patient />
+                        }
+                    </KeyboardAvoidingView>
 
                 </Wrapper>
             </Wrapper>
         </Wrapper>
+
     )
 };
 
@@ -206,7 +206,10 @@ const Doctor = () => {
 
                 {
                     specialites.map((vl, i) => {
-                        return (
+                         const [colorNow,setColorNow] =React.useState(colors.buttonColor)
+                        const [clicked, setclicked] = React.useState(false)
+                         return (
+                        
                             <Wrapper key={i.toString() + "_container"} style={{
                                 margin: 5
                             }}>
@@ -215,8 +218,8 @@ const Doctor = () => {
                                     title={vl}
                                     height={30}
                                     small
-                                    backgroundColor={BtColor}
-                                    onPress={() => { !specs.includes(vl) && specs.push(vl); setBtColor(colors.buttonColor) }}
+                                    backgroundColor={clicked? colors.buttonColor:colors.lightColor}
+                                    onPress={() => { !specs.includes(vl) && specs.push(vl); setclicked(!clicked)}}
                                 />
                             </Wrapper>
 

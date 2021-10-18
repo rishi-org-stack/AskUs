@@ -7,9 +7,16 @@ interface Props {
     centerV?: boolean;
     centerH?: boolean;
     right?: boolean;
+    radius?:number;
     flex?: number;
+    alignItems?:"flex-start"|"flex-end"|"center";
     backgoundColor?: string;
     margin?: number;
+    marginB?: number;
+    marginT?: number;
+    marginL?: number;
+    marginR?: number;
+    height?: number| string;
     children?: React.ReactNode;
     style?: object;
 }
@@ -25,7 +32,18 @@ export default function Wrapper(props: Props) {
             && styles.centerV,
             props.centerH
             && styles.centerH,
-            { flex: props.flex, backgroundColor: props.backgoundColor, margin: props.margin },
+            { 
+                flex: props.flex, 
+                backgroundColor: props.backgoundColor, 
+                margin: props.margin, 
+                borderRadius:props.radius,
+                marginBottom: props.marginB,
+                marginLeft: props.marginL,
+                marginRight: props.marginR,
+                marginTop: props.marginT,
+                height: props.height ,
+                alignItems:props.alignItems
+            },
             props.style,
             {
 

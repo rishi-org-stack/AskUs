@@ -30,19 +30,14 @@ const Input = React.forwardRef<TextInput, inputProps>((props, ref) => {
                 height: props.height,
                 width: props.width,
                 borderRadius: props.radius,
-                color: props.contentColor,
+                color: props.contentColor ==undefined?'white':props.contentColor,
                 flex: props.flex,
 
             }, props.style]}
             onChangeText={props.onChangeText}
-            // onChangeText={() => ok.current.focus()}
             maxLength={props.maxLength}
             keyboardType={props.type}
         >
-            {/* <Wrapper > */}
-            {/* <Text style={{ paddingLeft: 50 }}>{props.content}</Text> */}
-            {/* </Wrapper> */}
-
         </TextInput>
 
     )

@@ -9,79 +9,31 @@
 //  */
 
 import React from 'react';
-import Wrapper from './src/components/wrapper';
-// import ComText from './src/components/text';
-// import Button from './src/components/button';
-// import Input from './src/components/input';
-import Input from './src/app/components/input'
-import { colors } from "./src/app/theme"
-import { Text } from 'react-native';
-import EmailIcon from "./src/components/icon"
 import {
   NavigationContainer,
 
 } from '@react-navigation/native';
-import Button from './src/app/components/button';
-import EmailScreen from './src/app/module/auth/otp';
-import AuthRoute from './src/app/router/auth';
+import styles from "./styles.json"
+// import Button from './src/app/components/button';
+// import EmailScreen from './src/app/module/auth/otp';
+// import AuthRoute from './src/app/router/auth';
 import DetailScreen from './src/app/module/user/details';
+import Profile from './src/app/module/user/patient/doctor';
+import { create } from 'tailwind-rn';
+import { View } from 'react-native';
+
+const {tailwind} = create(styles)
 //TODO:cerate email screen
 const App = () => {
   return (
-    <NavigationContainer >
-      {/* <Wrapper
-        backgoundColor={colors.background}
-        flex={1}>
+    <View style={tailwind('bg-red-500 h-10 container')}>
 
-
-      </Wrapper> */}
-      {/* <EmailScreen /> */}
-      {/* <AuthRoute /> */}
-      <DetailScreen />
-    </NavigationContainer>
-
-    // <View>
-    // {/* <ComText
-    // content="Ask Us"
-    // color="white"
-    // medium
-    // /> */}
-    //  {/* //width={Dimensions.get("screen").width} flex={1} /> */ }
-    // {/* <Input content="rishi" head={"ok"} /> */ }
-    // </Wrapper>
-    // </View>
-    // <Button onPress={() => console.log("button")} row center backgoundColor="black" flex={1}>
-    //   <ComText
-    //     content="Ask Us"
-    //     color="white"
-    //     medium
-    //   />
-    // </Button>
+    </View>
+    // <NavigationContainer >
+    //   <Profile />
+    // </NavigationContainer>
   )
 };
 
 
-// import React from 'react'
-// import styled from 'styled-components/native'
-
-// const Container = styled.View`
-//   flex: 1;
-//   background-color: #fff;
-//   align-items: center;
-//   justify-content: center;
-// `
-
-// const Title = styled.Text`
-//   font-size: 24;
-// `
-
-// const App = () => {
-//   // return {
-//   return (
-//     <Container>
-//       <Title>Crowdbotics app</Title>
-//     </Container>
-//   )
-//   // }
-// }
 export default App;

@@ -17,7 +17,9 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
     "react-navigation": "^4.4.4",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.3.1",
+    "tailwind-rn": "^3.0.1",
+    "tailwindcss": "^2.2.17"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

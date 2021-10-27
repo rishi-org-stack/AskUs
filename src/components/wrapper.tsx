@@ -17,6 +17,7 @@ interface Props {
     marginL?: number;
     marginR?: number;
     height?: number| string;
+    width?: number| string;
     children?: React.ReactNode;
     style?: object;
 }
@@ -42,6 +43,7 @@ export default function Wrapper(props: Props) {
                 marginRight: props.marginR,
                 marginTop: props.marginT,
                 height: props.height ,
+                width: props.width,
                 alignItems:props.alignItems
             },
             props.style,

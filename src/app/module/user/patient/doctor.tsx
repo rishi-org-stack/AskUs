@@ -1,7 +1,7 @@
 import React from 'react'
-import { ScrollView } from 'react-native';
+import { Image, ScrollView } from 'react-native';
 import {  Button, Text, Wrapper } from '../../../../components';
-import { Card } from '../../../components/card';
+import  Card from '../../../components/cards/advice';
 import { colors } from '../../../theme';
 // import Button from '../../../components/button'
 // import Input from '../../../components/input'
@@ -54,12 +54,37 @@ const ProfileScreen = () => {
                         radius={5}
                         marginB={0}>
                          
-                            <Wrapper flex={1}>
-                                <Text>
-                                    photo
-                                </Text>
+                            <Wrapper flex={1} row center alignItems='flex-end'>
+                                <Wrapper 
+                                    height="70%" 
+                                    width="40%"
+                                    backgoundColor={colors.lightColor} 
+                                    alignItems='center'
+                                    radius={10}
+                                    >
+                                    <Wrapper
+                                        height="125%" 
+                                        width="80%"
+                                        style={{
+                                            bottom:35
+                                        }}
+                                    >
+                                        <Image
+                                            source={
+                                                require('../../../../asset/pTest2.jpg')
+                                                }
+                                            style={{
+                                                height:"100%",
+                                                width:"100%",
+                                                borderRadius:10,
+                                                backgroundColor:'transparent'
+                                            }}
+                                        />
+                                    </Wrapper>
+                                </Wrapper>
+                                
                             </Wrapper>
-                            <Wrapper flex={1} center>
+                            <Wrapper  center marginB={10}>
                                 <Text large>
                                     Dr. Abcdefg jha
                                 </Text>
@@ -76,13 +101,8 @@ const ProfileScreen = () => {
                             radius={10}
                             marginR={20}
                             >
-                            <Text small marginB={2}>
-                                Patients
-                            </Text>
-                            <Text medium/>
-                            <Text >
-                                132
-                            </Text>
+                            <Text small marginB={2}>Patients</Text>
+                            <Text medium>132</Text>
                         </Wrapper>
                         <Wrapper 
                             flex={1} 
@@ -108,8 +128,7 @@ const ProfileScreen = () => {
                 margin={10}
                 >
 
-                    <Text> Top addvices </Text>
-                    <Text>advies</Text>
+                    <Text marginB={10}> Top advices </Text>
                      <ScrollView style={{
                          width:'100%'
                      }}>
@@ -118,7 +137,23 @@ const ProfileScreen = () => {
                                 return( 
                                     //TODO:make it clickable 
                                     // <Button onPress={()=>console.log('detail page')}> */}
-                                    <Card  marginB={10} header={ob.header} content={ob.content1}/> 
+                                    <Card  
+                                        key={i.toString()+"_card_advice"}
+                                        marginB={10} 
+                                        header={ob.header} 
+                                        content={ob.content1}
+                                        leftComp={
+                                                <Image
+                                                    source={
+                                                        require('../../../../asset/pTest1.jpg')
+                                                    }
+                                                    style={{
+                                                        height:"100%",
+                                                        width:"100%",
+                                                        borderRadius:10
+                                                    }}
+                                                    />
+                                        }/> 
                                         // </Button> */}
                                 ) 
                              }) 

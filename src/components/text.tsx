@@ -11,6 +11,8 @@ interface Props {
     weight?: string;
     normal?: boolean;
     marginT?:number;
+    marginL?:number;
+    marginR?:number;
     marginB?:number;
     lines?:number
 }
@@ -22,7 +24,9 @@ function Text(props: Props) {
             textAlign: 'center',
             fontWeight: props.bold && 'bold' || props.normal && 'normal' || '600',
             marginTop:props.marginT,
-            marginBottom:props.marginB
+            marginBottom:props.marginB,
+            marginLeft:props.marginL,
+            marginRight:props.marginR
         },]}
         numberOfLines={props.lines}
         >

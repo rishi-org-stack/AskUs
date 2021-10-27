@@ -18,7 +18,7 @@ import styles from "./styles.json"
 // import EmailScreen from './src/app/module/auth/otp';
 // import AuthRoute from './src/app/router/auth';
 import DetailScreen from './src/app/module/user/details';
-import Profile from './src/app/module/user/patient/doctor';
+import Profile from './src/app/module/user/patient/connect';
 import { create } from 'tailwind-rn';
 import { View } from 'react-native';
 
@@ -26,12 +26,9 @@ const {tailwind} = create(styles)
 //TODO:cerate email screen
 const App = () => {
   return (
-    <View style={tailwind('bg-red-500 h-10 container')}>
-
-    </View>
-    // <NavigationContainer >
-    //   <Profile />
-    // </NavigationContainer>
+    <NavigationContainer >
+      <Profile />
+    </NavigationContainer>
   )
 };
 

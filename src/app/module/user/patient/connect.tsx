@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, ScrollView } from 'react-native'
 import { Text, Wrapper, Button } from '../../../../components'
 import Card from '../../../components/cards/connect'
+import AskUsHeader from '../../../components/header'
 import { colors } from '../../../theme'
 
 interface Props {
@@ -34,8 +35,7 @@ const data= [
 const ConnectScreen = (props: Props) => {
     return (
         <Wrapper backgoundColor={colors.background} flex={1}>
-            <Wrapper flex={1}>
-            </Wrapper> 
+            
             <Wrapper flex ={10} margin={15}>
                 <ScrollView style={{
                     width:'100%'
@@ -79,7 +79,6 @@ const ConnectScreen = (props: Props) => {
                                                             <Text marginT={5} marginB={5}>
                                                                 ok
                                                             </Text>
-                                                            
                                                     </Button>
                                                 </Wrapper>
                                             </Wrapper>

@@ -3,14 +3,18 @@ import { Image, TextInput, TouchableOpacity } from 'react-native';
 import { Wrapper } from '../../components';
 import { colors } from '../theme';
 import Input from './input';
-
+import Icons from "../../asset/index"
 interface Props {
     onPressInput?: () => void;
 }
 
 
 const AskUsHeader = (props: Props) => {
+    // const [isNotif, setIsNotif] = React.useState(false)
     const inputPin =React.useRef<TextInput>(null)
+    // React.useEffect(()=>{
+    //     setTimeout(setIsNotif(!isNotif),5000)
+    // },[isNotif])
     return (
         <Wrapper row height={50} alignItems='center'>
             <Wrapper height={40} marginL={10} width={40} radius={50} backgoundColor="red"/>
@@ -27,17 +31,8 @@ const AskUsHeader = (props: Props) => {
                         borderColor:"white"
                     }}>
                         <Wrapper height={35} alignItems='center' center width={35} radius={35}>
-
-                            <Image
-                                source={
-                                    require('../../asset/search.png')
-                                }
-                                style={{
-                                    height:"50%",
-                                    width:"50%",
-                                    tintColor:'white'
-                                }}
-                            />
+                           
+                            <Icons.Search height={20} width={20} fill={'white'}/>
                         </Wrapper>
                         <Wrapper flex={1}>
                             <TextInput 
@@ -55,20 +50,15 @@ const AskUsHeader = (props: Props) => {
                 </TouchableOpacity>
             </Wrapper>
             <Wrapper flex={1}  height="100%" row>
-                <Wrapper flex={1} center alignItems='center' >
-                    <Image
-                        source={
-                            require('../../asset/bell.png')
-                            }
-                        style={{
-                            height:"40%",
-                            width:"40%",
-                            tintColor:'white'
-                        }}
-                        />
+                <Wrapper flex={1} center alignItems='center'>
+                        <TouchableOpacity>
+                            <Icons.Bell height={25} width={25} />
+                        </TouchableOpacity>
                 </Wrapper>
                 <Wrapper flex={1} center>
-                    <Wrapper height={40}  width={40} radius={50} backgoundColor="red"/>
+                    <TouchableOpacity>
+                        <Wrapper height={40}  width={40} radius={50} backgoundColor="red"/>
+                    </TouchableOpacity>
                 </Wrapper>
             </Wrapper>
         </Wrapper>

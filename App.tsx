@@ -18,7 +18,7 @@ import styles from "./styles.json"
 // import EmailScreen from './src/app/module/auth/otp';
 // import AuthRoute from './src/app/router/auth';
 import DetailScreen from './src/app/module/user/details';
-import Profile from './src/app/module/user/patient/home';
+import Profile from './src/app/module/user/doctor/profile';
 import { create } from 'tailwind-rn';
 import { View } from 'react-native';
 

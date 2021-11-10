@@ -206,7 +206,6 @@ const Doctor = () => {
 
                 {
                     specialites.map((vl, i) => {
-                         const [colorNow,setColorNow] =React.useState(colors.buttonColor)
                         const [clicked, setclicked] = React.useState(false)
                          return (
                         

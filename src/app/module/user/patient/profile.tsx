@@ -1,6 +1,3 @@
-//left side mai ek tab bar banwo
-//jo ki pattients upcoming and out going requestconnected doctor tk jane mai madat kre
-//TODO:willchange it thinking about it
 import React from 'react';
 import {Text, Wrapper} from '../../../../components';
 import {colors} from '../../../theme';
@@ -120,7 +117,7 @@ const advices=[
   }
 ]
 interface Props {}
-const DoctorProfile = (props: Props) => {
+const PatientProfile = (props: Props) => {
   const [history,setHistory]=React.useState(true)
   return (
     <Wrapper backgoundColor={colors.background} flex={1}>
@@ -146,7 +143,7 @@ const DoctorProfile = (props: Props) => {
             Name:{"  "}Name is name
           </Text>
           <Text marginB={5}>
-            Age:{"  "}56{"\t\t\t"} Exp:{"  "}32
+            Age:{"  "}56{"\t\t\t"} Sex:{"  "}Male
           </Text>
           <Text>
             Symtoms: 
@@ -299,4 +296,4 @@ const AdviceView=()=>{
     </ScrollView>
   )
 }
-export default DoctorProfile;
+export default PatientProfile;

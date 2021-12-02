@@ -8,7 +8,7 @@ interface inputProps {
     // ref?: React.RefObject<TextInput>;
     // backgroundColor?: string;
     height?: number
-    width?: number;
+    width?: number|string;
     radius?: number;
     style?: object;
     flex?: number;

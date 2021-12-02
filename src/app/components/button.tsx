@@ -36,11 +36,11 @@ function Button({ title, normal, height, large, small, backgroundColor, onPress,
                 marginRight: 20
             }}>
                 <Text
-                    content={title}
+
                     large={large}
                     small={small}
                     normal={normal}
-                    bold={bold} />
+                    bold={bold} >{title}</Text>
                 <Wrapper style={{
                     // marginLeft: 20,
                     // alignSelf: "f"

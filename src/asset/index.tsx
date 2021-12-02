@@ -14,7 +14,18 @@ import Search from "./search.svg";
 import Bell from "./bell.svg";
 import Notif from "./notif.svg";
 import Left from "./left.svg";
-import Advice from "./advice.svg"
+import Advice from "./advice.svg";
+import Doctor from "./doctor.svg"
+import Patient from "./patient.svg"
+import Request from './request.svg';
+import Invite from "./invite.svg";
+import Name from "./name.svg";
+import Right from "./right.svg";
+import Mail from "./mail.svg";
+import Ham from "./ham.svg";
+import SentRequest from "./sent.svg";
+import Home from "./home.svg";
+import LogOut from "./logout.svg"
 export default {
     Ear,
     Alzheimer,
@@ -31,5 +42,15 @@ export default {
     Vitamins,
     Search,
     Notif,
-    Left,Advice
+    Left,Advice,Doctor,
+    Patient,
+    Request,
+    Invite,
+    Name,
+    Right,
+    Mail,
+    Ham,
+    SentRequest,
+    Home,
+    LogOut
 }

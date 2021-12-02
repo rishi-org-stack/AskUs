@@ -7,7 +7,7 @@ interface Props {
     backgroundColor: string;
     contentColor?: string;
     // ref?: React.RefObject<TextInput>;
-    width?: number
+    width?: number|string
     children?: React.ReactNode;
     margin?: number;
     marginL?: number;
@@ -49,7 +49,7 @@ const Input = React.forwardRef<TextInput, Props>((props, ref) => {
                         marginLeft: 10
                     }}
                     height={70}
-                    width={props.width == undefined ? Dimensions.get('screen').width : props.width}
+                    width={props.width}
                     onChangeText={props.onChangeText}
                     maxLength={props.maxLength}
                     type={props.type}

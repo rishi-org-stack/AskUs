@@ -123,7 +123,9 @@ const PatientProfile = (props: Props) => {
     <Wrapper backgoundColor={colors.background} flex={1}>
       {/* // header with back icon */}
       <Wrapper row height={30} alignItems="center" width="100%">
-        <TouchableOpacity>
+        <TouchableOpacity style={{
+          marginLeft:10
+        }}>
           <Icons.Left height={20} width={20} />
         </TouchableOpacity>
       <Wrapper flex={1} />
@@ -131,7 +133,14 @@ const PatientProfile = (props: Props) => {
       {/* header ends */}
 
       {/* body */}
-      <Wrapper flex={1} row backgoundColor={colors.lightColor}>
+      <Wrapper 
+        flex={1} 
+        row 
+        backgoundColor={colors.lightColor} 
+        marginR={10} 
+        marginL={10} 
+        marginB={10} 
+        radius={10}>
         <Wrapper flex={1} 
                 backgoundColor={colors.background} 
                 margin={20} 

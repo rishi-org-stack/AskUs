@@ -1,5 +1,5 @@
 import React, { ReactChildren } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 
 interface Props {
     row?: boolean;
@@ -8,6 +8,10 @@ interface Props {
     centerH?: boolean;
     right?: boolean;
     radius?:number;
+    radiusBR?:number;
+    radiusBL?:number;
+    radiusTR?:number;
+    radiusTL?:number;
     flex?: number;
     alignItems?:"flex-start"|"flex-end"|"center";
     backgoundColor?: string;
@@ -18,10 +22,16 @@ interface Props {
     marginR?: number;
     height?: number| string;
     width?: number| string;
+    borderW?:number;
+    borderB?:number;
+    borderT?:number;
+    borderL?:number;
+    borderR?:number;
+    borderC?:string
     children?: React.ReactNode;
-    style?: object;
+    style?: StyleProp<ViewStyle>;
 }
-export default function Wrapper(props: Props) {
+function Container(props: Props) {
     return (
         <View style={[
             props.row
@@ -44,7 +54,17 @@ export default function Wrapper(props: Props) {
                 marginTop: props.marginT,
                 height: props.height ,
                 width: props.width,
-                alignItems:props.alignItems
+                alignItems:props.alignItems,
+                borderWidth:props.borderW,
+                borderColor:props.borderC,
+                borderLeftWidth:props.borderL,
+                borderRightWidth:props.borderL,
+                borderBottomWidth:props.borderB,
+                borderTopWidth:props.borderT,
+                borderBottomLeftRadius:props.radiusBL,
+                borderBottomRightRadius:props.radiusBR,
+                borderTopLeftRadius:props.radiusTL,
+                borderTopRightRadius:props.radiusTR
             },
             props.style,
             {
@@ -73,3 +93,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     }
 })
+
+export {
+    Container
+}
+
+export type{
+    Props
+}

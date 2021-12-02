@@ -7,6 +7,7 @@ interface ConnectProps {
     topComp?: React.ReactElement;
     downComp?: React.ReactElement;
     marginB?:number;
+    children?:React.ReactNode
 }
 
 type Props= CardProps & ConnectProps;
@@ -20,13 +21,14 @@ export const TopDownCard = (props: Props) => {
         marginB={props.marginB}
     >
         {props.topComp}
-        <Card {...props} marginB={0}/>
-        {
+        {/* <Card {...props} marginB={0}/> */}
+        {props.children}
+        {/* {
             props.downComp!=undefined &&
-            <Wrapper height={45}>
+            <Wrapper height={45}> */}
                 {props.downComp}
-            </Wrapper>
-        }
+            {/* </Wrapper>
+        } */}
 
     </Wrapper>
     )

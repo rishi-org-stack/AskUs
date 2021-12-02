@@ -1,11 +1,15 @@
 import React, { useRef } from 'react'
 import { Image, TextInput, TouchableOpacity } from 'react-native';
-import { Wrapper } from '../../components';
+import { Icon, Wrapper } from '../../components';
 import { colors } from '../theme';
 import Input from './input';
 import Icons from "../../asset/index"
+import TouchableContainer from '../../components/containers/TouchableWrapper';
+import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 interface Props {
     onPressInput?: () => void;
+    nav:DrawerNavigationHelpers
+    // onPressMenu?: ()=>void;
 }
 
 
@@ -17,8 +21,19 @@ const AskUsHeader = (props: Props) => {
     // },[isNotif])
     return (
         <Wrapper row height={50} alignItems='center'>
-            <Wrapper height={40} marginL={10} width={40} radius={50} backgoundColor="red"/>
-            <Wrapper flex={2} height='100%' center marginL={10} marginR={10} >
+            <TouchableContainer 
+                height={40} 
+                marginL={10} 
+                width={40} 
+                radius={50} 
+                alignItems='center'
+                // backgoundColor="red"
+                Onpress={()=>props.nav.openDrawer()}
+                centerMain
+                >
+                    <Icons.Ham height={20} width={20}/>
+                </TouchableContainer>
+            <Wrapper flex={4} height='100%' center marginL={10} marginR={10} >
                 <TouchableOpacity onPress={()=>{
                     inputPin.current?.focus();
                     props.onPressInput!==undefined 
@@ -49,18 +64,9 @@ const AskUsHeader = (props: Props) => {
                     
                 </TouchableOpacity>
             </Wrapper>
-            <Wrapper flex={1}  height="100%" row>
-                <Wrapper flex={1} center alignItems='center'>
-                        <TouchableOpacity>
-                            <Icons.Bell height={25} width={25} />
-                        </TouchableOpacity>
-                </Wrapper>
-                <Wrapper flex={1} center>
-                    <TouchableOpacity>
-                        <Wrapper height={40}  width={40} radius={50} backgoundColor="red"/>
-                    </TouchableOpacity>
-                </Wrapper>
-            </Wrapper>
+            <TouchableContainer height={'100%'} width={30} centerMain>
+                <Icons.Bell  height={20} width={20}/>
+            </TouchableContainer>
         </Wrapper>
     )
 }

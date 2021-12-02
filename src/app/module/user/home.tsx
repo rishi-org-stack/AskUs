@@ -5,41 +5,44 @@ import { Card } from '../../components/cards/card'
 import AskUsHeader from '../../components/header'
 import { colors } from '../../theme'
 import Icons from "../../../asset/index"
+import TouchableContainer from '../../../components/containers/TouchableWrapper'
+import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types'
+import { TopDownCard } from '../../components/cards/topDownCars'
 interface Props {
-    
+    navigation: DrawerNavigationHelpers
 }
 
 const data=[
     {
         name:'Diet',
-        file:<Icons.Diet width={50} height={50}/>
+        file:<Icons.Diet width={30} height={30}/>
     },
     {
         name:"Ear",
-        file:<Icons.Ear width={50} height={50}/>
+        file:<Icons.Ear width={30} height={30}/>
 
     },
     {
         name:"Eyes",
-        file:<Icons.Eyes width={50} height={50}/>},
+        file:<Icons.Eyes width={30} height={30}/>},
     {
         name:"Pregnancy",
-        file:<Icons.Pregnant width={50} height={50}/>   },
+        file:<Icons.Pregnant width={30} height={30}/>   },
     {
         name:"Bone",
-        file:<Icons.Bones width={40} height={40}/>    },
+        file:<Icons.Bones width={30} height={30}/>    },
     {
         name:"Teeth",
-        file:<Icons.Teeth width={40} height={40}/>},
+        file:<Icons.Teeth width={30} height={30}/>},
     {
         name:"Vitamins",
-        file:<Icons.Vitamins width={40} height={40}/>    },
+        file:<Icons.Vitamins width={30} height={30}/>    },
     {
         name:"Embroy",
-        file:<Icons.Embroy width={40} height={40}/>    },
+        file:<Icons.Embroy width={30} height={30}/>    },
     {
         name:"Alzheimer",
-        file:<Icons.Alzheimer width={40} height={40}/>}
+        file:<Icons.Alzheimer width={30} height={30}/>}
 ]
 const adData =[
     {
@@ -89,30 +92,43 @@ const adData =[
 ]
 const Home = (props: Props) => {
     return (
+        
         <Wrapper backgoundColor={colors.background} flex={1}>
+            <ScrollView>
             <Wrapper flex={1}>
-                <AskUsHeader/>
+                <AskUsHeader nav={props.navigation}/>
             </Wrapper>
-            <Wrapper height={80} width='100%' center margin={10}>
+            <Wrapper height={60} width='100%' center margin={10}>
                 {/* TODO: make scroll vie a seprate compoennet such taht we need to pass only data and childeren compoennet */}
                 <ScrollView horizontal={true} >
                     {
                         data.map((val,i)=>{ 
+                            const [selected, setselected] = React.useState(false)
                             return( 
                                 //Move it to another compoenent outside moodule dir
-                                <TouchableOpacity key={i.toString()+"_part_by_filter"} style={{
-                                    marginRight:10
-                                }}>
-                                    <Wrapper height={75} radius={20} width={100} backgoundColor={colors.lightColor} >
-                                        <Wrapper height={50} width='100%' center alignItems='center' > 
-                                                {val.file}
-
+                                <TouchableContainer 
+                                    alignItems='center' 
+                                    key={i.toString()+"_part_by_filter"} 
+                                    LeftComponent={
+                                        <Wrapper marginL={10}>
+                                            {val.file}
                                         </Wrapper>
-                                        <Text>
-                                            {val.name}
-                                        </Text> 
-                                    </Wrapper>
-                                </TouchableOpacity> 
+                                    }
+                                    centerMain
+                                    height={60}
+                                    radius={10}
+                                    style={{
+                                        marginRight:10,
+                                        backgroundColor:selected?colors.buttonColor:colors.lightColor
+                                }}
+                                Onpress={()=>{
+                                    setselected(!selected)
+                                }}
+                                >
+                                    <Text marginL={20} marginR={20}>
+                                        {val.name}
+                                    </Text>
+                                </TouchableContainer> 
                             )
                         })
                     }
@@ -124,10 +140,10 @@ const Home = (props: Props) => {
                     {
                         adData.map((val,i)=>{
                            return (
-                                <TouchableOpacity
+                                <TouchableContainer
                                     key={i.toString()+"_card_advice"}
                                 >
-                                    <Card  
+                                    {/* <Card  
                                         marginB={10} 
                                         header={"ok"} 
                                         content={"ok"}
@@ -142,13 +158,42 @@ const Home = (props: Props) => {
                                                     borderRadius:10
                                                 }}
                                         />
-                                    }/>
-                                </TouchableOpacity>
+                                        
+                                    }/> */}
+                                    <TopDownCard 
+                                        topComp={
+                                        <Wrapper height={'15%'} >
+                                            <Text marginL={20}>
+                                               Dr ok
+                                            </Text>
+                                        </Wrapper>
+                                        }
+                                        downComp={
+                                            <Wrapper 
+                                                height={'15%'} 
+                                                center
+                                                >
+                                                <Text marginL={20}> Nov 30 </Text>
+                                            </Wrapper>
+                                        }
+                                        marginB={10}
+                                    >
+                                        <TouchableContainer 
+                                            height={"70%"} 
+                                            width={"100%"}
+                                            LeftComponent={<Icons.Advice height={'100%'} width={'100%'}/>}
+                                            >
+                                            pllp
+                                        </TouchableContainer>
+                                    </TopDownCard>
+                                </TouchableContainer>
                             )
                         })
                     }
                 </ScrollView>     
             </Wrapper>
+            </ScrollView>
+            {/* <Wrapper width={'100%'} height={60}/> */}
         </Wrapper>
     )
 }

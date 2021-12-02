@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet } from 'react-native'
-import Wrapper from './wrapper'
+import Wrapper from './containers/wrapper'
 interface Props {
     row?: boolean;
     center?: boolean;

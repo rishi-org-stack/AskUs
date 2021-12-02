@@ -1,39 +1,94 @@
 import React, { ReactElement } from 'react'
 import { Dimensions, TextInput } from 'react-native'
 import Text from '../../../components/text'
-import Wrapper from '../../../components/wrapper'
+import Wrapper from '../../../components/containers/wrapper'
 import Button from '../../components/button'
 import Input from '../../components/input'
 import { colors } from '../../theme'
-import langEng from './../../lang/eng';
+import TouchableContainer from '../../../components/containers/TouchableWrapper'
+import Icon from "../../../asset";
+import { StackNavigationProp } from '@react-navigation/stack'
+import { useMutation } from 'react-query'
+import { VerifyOtpRequest } from '../../../types/interfaces'
+import { VerifyOtp } from '../../../services'
+import idState from '../../state/id'
+import { getData, storeData } from '../../../cache/user'
+import tokenState from '../../state/token'
 
-function OTPScreen(): ReactElement {
-    const [pin1Text, setpin1Text] = React.useState('')
-    const [pin2Text, setpin2Text] = React.useState('')
-    const [pin3Text, setpin3Text] = React.useState('')
-    const [pin4Text, setpin4Text] = React.useState('')
-    const [pin5Text, setpin5Text] = React.useState('')
-    const [pin6Text, setpin6Text] = React.useState('')
+interface Props{
+    navigation: StackNavigationProp<any,any>
+}
+function OTPScreen(p:Props): ReactElement {
+    const [otp, setotp] = React.useState('')
+    const [id, setid] = React.useState(0)
+    const [data, setdata] = React.useState()
+    const [posted, setposted] = React.useState(false)
+    const [pres, setpres] = React.useState(false)
     const pin1 = React.useRef<TextInput>(null)
     const pin2 = React.useRef<TextInput>(null)
     const pin3 = React.useRef<TextInput>(null)
     const pin4 = React.useRef<TextInput>(null)
     const pin5 = React.useRef<TextInput>(null)
     const pin6 = React.useRef<TextInput>(null)
+
     React.useEffect(() => {
+
         pin1.current?.focus()
-    }, [])
-    // let otp = ''
+        setid(idState.id.get())
+        let cacheRes = getData()
+        Promise.resolve(cacheRes).then(
+          (d)=>{
+            if (d !==null){
+                setpres(true)
+            }
+            console.log(d);
+            
+          }
+        )
+        
+        if (posted){
+
+            tokenState.token.set(data!['data'])
+            let storeRes = storeData(String(data!['data']))
+            Promise.
+                    resolve(storeRes).
+                    then(d=>console.log("cache store res",d)).
+                    catch(e=>console.log("error in cache",e))
+                pres ? p.navigation.navigate('HomeRoute')
+                :
+                p.navigation.navigate('Details')
+        }
+
+        
+    }, [posted])
+
+    const mutation = useMutation((req: VerifyOtpRequest) => {
+
+        return VerifyOtp(req)
+   
+      },{
+          onSuccess:(data)=>{
+            setdata(data)
+            console.log(data)
+            setposted(true)
+          },
+          onError:()=>{
+              console.log("error");
+              
+          }
+    })
     return (
         <Wrapper flex={1} backgoundColor={colors.background}>
-            <Wrapper flex={2} center>
+            <Wrapper center alignItems='center'>
                 <Text
-                    content="Welcome to AskUs"
                     bold
                     large
-                />
+                >
+                    Welcome to AskUs
+
+                </Text>
             </Wrapper>
-            <Wrapper flex={1} center>
+            <Wrapper flex={1} center alignItems='center'>
                 <Wrapper row >
                     <Input
                         ref={pin1}
@@ -46,10 +101,8 @@ function OTPScreen(): ReactElement {
                         maxLength={1}
                         type={'numeric'}
                         onChangeText={(text) => {
-                            setpin1Text(text);
-                            // if (pin1Text != ''){
+                            setotp(otp+text)
                             pin2.current?.focus();
-                            // }
                         }}
                     />
                     <Input
@@ -62,7 +115,8 @@ function OTPScreen(): ReactElement {
                         maxLength={1}
                         type={'numeric'}
                         onChangeText={(text) => {
-                            setpin2Text(text)
+                            // setpin2Text(text)
+                            setotp(otp+text)
                             pin3.current?.focus()
                         }} />
                     <Input
@@ -75,7 +129,8 @@ function OTPScreen(): ReactElement {
                         maxLength={1}
                         type={'numeric'}
                         onChangeText={(text) => {
-                            setpin3Text(text)
+                            // setpin3Text(text)
+                            setotp(otp+text)
                             pin4.current?.focus()
                         }} />
                     <Input
@@ -88,7 +143,8 @@ function OTPScreen(): ReactElement {
                         maxLength={1}
                         type={'numeric'}
                         onChangeText={(text) => {
-                            setpin4Text(text)
+                            // setpin4Text(text)
+                            setotp(otp+text)
                             pin5.current?.focus()
                         }} />
                     <Input
@@ -101,7 +157,8 @@ function OTPScreen(): ReactElement {
                         maxLength={1}
                         type={'numeric'}
                         onChangeText={(text) => {
-                            setpin5Text(text)
+                            // setpin5Text(text)
+                            setotp(otp+text)
                             pin6.current?.focus()
                         }} />
                     <Input
@@ -114,34 +171,39 @@ function OTPScreen(): ReactElement {
                         maxLength={1}
                         type={'numeric'}
                         onChangeText={(text) => {
-                            setpin6Text(text)
-                            // pin6Text != undefined ?
-                            // () => {
-                            // otp =
-                            // console.warn(otp)
-                            // onDone()
-                            // } : null
-                            // pin3.current?.focus()
-                            // React.alert()
+                            // setpin6Text(text)
+                            setotp(otp+text)
+
+                            
                         }} />
                 </Wrapper>
-                <Button
-                    title={langEng.submit}
-                    bold
-                    width={Dimensions.get('screen').width - 60}
-                    onPress={() => {
-
-                        console.log(pin1Text +
-                            pin2Text +
-                            pin3Text +
-                            pin4Text +
-                            pin5Text +
-                            pin6Text)
+                <TouchableContainer 
+                    height={40} 
+                    width={100} 
+                    alignItems='center' 
+                    centerMain 
+                    radius={10}
+                    marginR={30}
+                    backgoundColor={colors.buttonColor}
+                    rightComponent={
+                        <Icon.Right height={20} width={15}/>
+                    }
+                    style={{
+                        alignSelf:'flex-end'
                     }}
-                />
+                    Onpress={()=>{
+                        mutation.mutate({"id": id, "otp": otp})
+                        
+                    }}
+                    >
+                    <Text>
+                        Next
+                    </Text>
+                </TouchableContainer> 
+                
             </Wrapper>
         </Wrapper>
     )
 }
 
-export default OTPScreen
+export default OTPScreen;

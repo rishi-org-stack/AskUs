@@ -17,6 +17,9 @@ interface Props {
     marginL?:number;
     marginR?:number;
     marginB?:number;
+    borderBW?:number;
+    borderW?:number;
+    borderC?: string;
     lines?:number
 }
 function Text(props: Props) {
@@ -30,7 +33,10 @@ function Text(props: Props) {
             marginBottom:props.marginB,
             marginLeft:props.marginL,
             marginRight:props.marginR,
-            margin:props.margin
+            margin:props.margin,
+            borderWidth:props.borderW,
+            borderBottomWidth:props.borderBW,
+            borderColor:props.borderC
         },]}
         numberOfLines={props.lines}
         >

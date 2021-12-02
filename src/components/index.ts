@@ -1,4 +1,4 @@
-import Wrapper from './wrapper';
+import Wrapper from './containers/wrapper';
 import Input from './input';
 import Button from './button';
 import Text from './text';

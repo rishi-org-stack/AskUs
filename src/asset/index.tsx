@@ -25,7 +25,9 @@ import Mail from "./mail.svg";
 import Ham from "./ham.svg";
 import SentRequest from "./sent.svg";
 import Home from "./home.svg";
-import LogOut from "./logout.svg"
+import LogOut from "./logout.svg";
+import Plus from "./plus.svg";
+import Minus from "./minus.svg";
 export default {
     Ear,
     Alzheimer,
@@ -52,5 +54,7 @@ export default {
     Ham,
     SentRequest,
     Home,
-    LogOut
+    LogOut,
+    Plus,
+    Minus
 }

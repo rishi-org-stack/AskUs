@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text as RnText } from 'react-native';
+import { StyleProp, Text as RnText, TextStyle } from 'react-native';
 
 interface Props {
     children?: React.ReactChildren[]|string[]| string;
@@ -20,7 +20,8 @@ interface Props {
     borderBW?:number;
     borderW?:number;
     borderC?: string;
-    lines?:number
+    lines?:number;
+    style?:StyleProp<TextStyle>
 }
 function Text(props: Props) {
     return (
@@ -37,7 +38,7 @@ function Text(props: Props) {
             borderWidth:props.borderW,
             borderBottomWidth:props.borderBW,
             borderColor:props.borderC
-        },]}
+        },props.style]}
         numberOfLines={props.lines}
         >
             {props.children}

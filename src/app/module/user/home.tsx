@@ -94,10 +94,11 @@ const Home = (props: Props) => {
     return (
         
         <Wrapper backgoundColor={colors.background} flex={1}>
-            <ScrollView>
-            <Wrapper flex={1}>
+            {/* <Wrapper > */}
                 <AskUsHeader nav={props.navigation}/>
-            </Wrapper>
+            {/* </Wrapper> */}
+            <ScrollView>
+            
             <Wrapper height={60} width='100%' center margin={10}>
                 {/* TODO: make scroll vie a seprate compoennet such taht we need to pass only data and childeren compoennet */}
                 <ScrollView horizontal={true} >
@@ -162,11 +163,11 @@ const Home = (props: Props) => {
                                     }/> */}
                                     <TopDownCard 
                                         topComp={
-                                        <Wrapper height={'15%'} >
+                                        <TouchableContainer height={'15%'} >
                                             <Text marginL={20}>
                                                Dr ok
                                             </Text>
-                                        </Wrapper>
+                                        </TouchableContainer>
                                         }
                                         downComp={
                                             <Wrapper 
@@ -190,9 +191,11 @@ const Home = (props: Props) => {
                             )
                         })
                     }
-                </ScrollView>     
+                </ScrollView> 
+                
             </Wrapper>
             </ScrollView>
+
             {/* <Wrapper width={'100%'} height={60}/> */}
         </Wrapper>
     )

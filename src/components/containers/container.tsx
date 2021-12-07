@@ -1,5 +1,6 @@
 import React, { ReactChildren } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
+import { colors } from '../../app/theme';
 
 interface Props {
     row?: boolean;
@@ -45,7 +46,7 @@ function Container(props: Props) {
             && styles.centerH,
             { 
                 flex: props.flex, 
-                backgroundColor: props.backgoundColor, 
+                backgroundColor:props.backgoundColor, 
                 margin: props.margin, 
                 borderRadius:props.radius,
                 marginBottom: props.marginB,
@@ -97,6 +98,7 @@ const styles = StyleSheet.create({
 export {
     Container
 }
+          // borderRadius:50, 
 
 export type{
     Props

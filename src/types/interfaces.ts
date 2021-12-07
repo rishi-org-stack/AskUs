@@ -9,9 +9,10 @@ interface Doctor{
 
 
 interface Patient{
-    token:string;
     name:string;
     age:number;
+    height:number;
+    weight:number;
     sex:string;
     concerned_secialities:string[];
 
@@ -29,5 +30,5 @@ interface VerifyOtpRequest {
 export type {
     OtpRequest,
     VerifyOtpRequest,
-    Doctor
+    Doctor,Patient
 }

@@ -12,11 +12,35 @@ interface Props {
 const ProfileDoc = (props: Props) => {
   return (
     <Wrapper flex={1} backgoundColor={colors.background}>
-      <AskUsHeader nav={props.navigation}/>
+      {/* <AskUsHeader nav={props.navigation}/> */}
+      <TouchableContainer 
+        width={'100%'} 
+        height={30} 
+        LeftComponent={
+          <TouchableContainer 
+            Onpress={()=>{
+              props.navigation.navigate('Home')
+            }}
+          >
+          <Icon.Left
+           height={20}
+            width={20}
+            style={{
+              marginLeft:20
+            }}
+            />
+          </TouchableContainer>
+        }
+        />
       <Wrapper 
         flex={1} 
+        width={'90%'}
         backgoundColor={colors.lightColor} 
-        radius={30}>
+        radius={30}
+        style={{
+          alignSelf:'center'
+        }}
+        >
           <Wrapper flex={4} row>
             
           </Wrapper>
@@ -105,6 +129,7 @@ const ProfileDoc = (props: Props) => {
             marginL={20}
             marginR={20}
             radius={10}
+            Onpress={()=>props.navigation.navigate('MyPatients')}
             style={{
               shadowColor: 'white',
               shadowOpacity: 2,

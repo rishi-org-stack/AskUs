@@ -5,8 +5,10 @@ import React from 'react';
 import {Text, Wrapper} from '../../../../components';
 import {colors} from '../../../theme';
 import Icons from '../../../../asset/index';
-import {ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import { TopDownCard } from '../../../components/cards/topDownCars';
+import TouchableContainer from '../../../../components/containers/TouchableWrapper';
+import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 
 const symptoms=[
   {
@@ -119,14 +121,18 @@ const advices=[
 
   }
 ] 
-interface Props {}
+interface Props {
+  navigation:DrawerNavigationHelpers
+}
 const DoctorProfileView = (props: Props) => {
   const [history,setHistory]=React.useState(true)
   return (
     <Wrapper backgoundColor={colors.background} flex={1}>
       {/* // header with back icon */}
       <Wrapper row height={30} alignItems="center" width="100%">
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>{
+          props.navigation.navigate('Home')
+        }}>
           <Icons.Left height={20} width={20} />
         </TouchableOpacity>
       <Wrapper flex={1} />
@@ -156,13 +162,15 @@ const DoctorProfileView = (props: Props) => {
               symptoms.map((val,i)=>{
                   return(
                     
-                      <Wrapper backgoundColor={colors.buttonColor} style={{
-                        alignSelf: "baseline"
-                      }}
-                      radius={10}
-                      marginB={5}
-                      marginT={5}
-                      key={i.toString()+"_symptom_card"}
+                      <Wrapper
+                       backgoundColor={colors.buttonColor} 
+                       style={{
+                          alignSelf: "baseline"
+                        }}
+                        radius={10}
+                        marginB={5}
+                        marginT={5}
+                        key={i.toString()+"_symptom_card"}
                       >
                         <Text marginR={30}>
                           {"\t\t\t"+val.symptom}
@@ -228,23 +236,25 @@ const HistoryView  =()=>{
   return(
     <ScrollView>
 
-      <Wrapper style={{
+      <Wrapper row style={{
       flexWrap: 'wrap',
-      flex:1,
-      // backgroundColor:'green',
-      // flexDirection:'row'
-    }}
-    
-    >
+      }}
+      >
       {
         headers.map((val,i)=>{
           return(
-            <Wrapper height={200} width={150} marginR={10} >
+            <TouchableContainer
+             height={200} 
+             width={Dimensions.get('screen').width/2-10} 
+             marginR={10} >
               <Text>
                 {val.header}
               </Text>
-              <Wrapper  height={150} width={150}backgoundColor='red'/>
-            </Wrapper>
+              <Wrapper
+                height={150} 
+                width={'100%'}
+                backgoundColor='red'/>
+            </TouchableContainer>
           )
         })
       }

@@ -57,3 +57,17 @@ export const UpdateUserDoctor= async (user:Doctor):Promise<any>=>{
   }
               
 }
+
+export const GetUser= async():Promise<any>=>{
+  const response =await api.get("/user/",{
+    headers:
+    {
+      "Authorization":"Bearer "+tokenState.token.get()
+    }
+  })
+
+  if (response.ok) {
+    return response.data
+  }
+       
+}

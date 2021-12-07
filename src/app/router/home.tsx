@@ -1,15 +1,3 @@
-// import { createStackNavigator } from '@react-navigation/stack';
-// import Home from '../module/user/home';
-// import React from 'react'
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { Dimensions } from 'react-native';
-// import Icon from '../../asset';
-// import { Wrapper } from '../../components';
-// const Stack = createStackNavigator();
-// const defaultNavigationSeetings = {
-//     headerShown: false
-// }
-
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import React from "react";
 import { SafeAreaView } from "react-native";
@@ -21,40 +9,9 @@ import { ScrollView } from "react-native-gesture-handler";
 import ProfileDoc from "../module/user/doctor/profile";
 import TouchableContainer from "../../components/containers/TouchableWrapper";
 import DoctorProfileView from "../module/user/doctor/patient";
-
-// const Tab = createBottomTabNavigator();
-// export default function HomeRoute() {
-//     return (
-//         <Tab.Navigator 
-//             screenOptions={{
-//                 headerShown:false,
-//                 tabBarStyle:{
-//                     position:'absolute',
-//                     backgroundColor:'red',
-//                     width:"90%",
-//                     left:"5%",
-//                     borderRadius:20,
-//                     marginBottom:5
-                    
-//                 }
-//             }}
-//             backBehavior='none'
-            
-//             >
-//           <Tab.Screen options={{
-//               tabBarIcon:()=>{
-//                   return <Icon.Request height={20}/>
-//               }
-//           }} name="Home" component={Home} />
-//           <Tab.Screen options={{
-//               tabBarIcon:()=>{
-//                   return <Icon.Request height={20}/>
-//               }
-//           }} name="HomeTwo" component={Home} />
-//           {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
-//         </Tab.Navigator>
-//     );
-//   }
+import PatientList from "../module/user/doctor/patientList";
+import RequestList from "../module/user/doctor/requestList";
+import FollowingDocList from "../module/user/doctor/followingDocList";
 
 const Drawer= createDrawerNavigator()
 
@@ -69,12 +26,20 @@ const DrawNav=()=>{
         <Drawer.Screen
           name="Home"
           component={Home} />
+
           <Drawer.Screen
           name="Profile"
           component={ProfileDoc} />
+
           <Drawer.Screen
           name="MyPatients"
-          component={DoctorProfileView} />
+          component={PatientList} />
+          <Drawer.Screen
+          name="MyRequests"
+          component={RequestList} />
+          <Drawer.Screen
+          name="DocsFollowing"
+          component={FollowingDocList} />
       </Drawer.Navigator>
     )
 }
@@ -83,7 +48,11 @@ const SideBar =(p:DrawerContentComponentProps)=>{
 //   const user = useGetUser(db,1)
 
     return(
-      <SafeAreaView style={{ flex: 1, backgroundColor:colors.lightColor}}>
+      <SafeAreaView 
+        style={{ 
+          flex: 1,
+          backgroundColor:colors.lightColor
+        }}>
         <DrawerContentScrollView>
           <TouchableContainer 
             marginL={20} 
@@ -110,25 +79,14 @@ const SideBar =(p:DrawerContentComponentProps)=>{
             height={1} 
             width={'100%'} 
             style={{
-                backgroundColor:'red'
+                backgroundColor:'white'
           }}/>
           <ScrollView>
-            {/* <DrawerItem 
-              label={()=><Text>Profile</Text>} 
-              onPress={()=> {
-                p.navigation.navigate('List')
-              }}
-              icon={
-                (p)=><Icon.Doctor 
-                        height={25} 
-                        width={25}
-                    />
-              }
-            /> */}
+
             <DrawerItem 
               label={()=><Text>Home</Text>} 
               onPress={function (): void {
-                // p.navigation.navigate('Password')
+                p.navigation.navigate('Home')
               }}
               icon={
                 (p)=><Icon.Home 
@@ -140,7 +98,7 @@ const SideBar =(p:DrawerContentComponentProps)=>{
             <DrawerItem 
               label={()=><Text>Requests</Text>} 
               onPress={function (): void {
-                // p.navigation.navigate('Password')
+                p.navigation.navigate('MyRequests')
               }}
               icon={
                 (p)=><Icon.Request 
@@ -179,6 +137,7 @@ const SideBar =(p:DrawerContentComponentProps)=>{
               label={()=><Text>Docs Following</Text>} 
               onPress={function (): void {
                 //   MigDown(db)
+                p.navigation.navigate('DocsFollowing')
               }}
               icon={
                   //Addrequest icon

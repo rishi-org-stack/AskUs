@@ -141,53 +141,53 @@ const Home = (props: Props) => {
                     {
                         adData.map((val,i)=>{
                            return (
-                                <TouchableContainer
-                                    key={i.toString()+"_card_advice"}
-                                >
-                                    {/* <Card  
-                                        marginB={10} 
-                                        header={"ok"} 
-                                        content={"ok"}
-                                        leftComp={
-                                        <Image
-                                            source={
-                                                require('../../../asset/pTest1.jpg')
-                                            }
-                                            style={{
-                                                    height:"100%",
-                                                    width:"100%",
-                                                    borderRadius:10
-                                                }}
-                                        />
-                                        
-                                    }/> */}
-                                    <TopDownCard 
-                                        topComp={
-                                        <TouchableContainer height={'15%'} >
-                                            <Text marginL={20}>
-                                               Dr ok
-                                            </Text>
-                                        </TouchableContainer>
-                                        }
-                                        downComp={
-                                            <Wrapper 
-                                                height={'15%'} 
-                                                center
-                                                >
-                                                <Text marginL={20}> Nov 30 </Text>
-                                            </Wrapper>
-                                        }
-                                        marginB={10}
-                                    >
-                                        <TouchableContainer 
-                                            height={"70%"} 
-                                            width={"100%"}
-                                            LeftComponent={<Icons.Advice height={'100%'} width={'100%'}/>}
-                                            >
-                                            pllp
-                                        </TouchableContainer>
-                                    </TopDownCard>
+                            <TouchableContainer
+                            key={i.toString()+"_card_advice"}
+                        >
+                            {/* <Card  
+                                marginB={10} 
+                                header={"ok"} 
+                                content={"ok"}
+                                leftComp={
+                                <Image
+                                    source={
+                                        require('../../../asset/pTest1.jpg')
+                                    }
+                                    style={{
+                                            height:"100%",
+                                            width:"100%",
+                                            borderRadius:10
+                                        }}
+                                />
+                                
+                            }/> */}
+                            <TopDownCard 
+                                topComp={
+                                <TouchableContainer height={'15%'} >
+                                    <Text marginL={20}>
+                                       Dr ok
+                                    </Text>
                                 </TouchableContainer>
+                                }
+                                downComp={
+                                    <Wrapper 
+                                        height={'15%'} 
+                                        center
+                                        >
+                                        <Text marginL={20}> Nov 30 </Text>
+                                    </Wrapper>
+                                }
+                                marginB={10}
+                            >
+                                <TouchableContainer 
+                                    height={"70%"} 
+                                    width={"100%"}
+                                    LeftComponent={<Icons.Advice height={'100%'} width={'100%'}/>}
+                                    >
+                                    pllp
+                                </TouchableContainer>
+                            </TopDownCard>
+                        </TouchableContainer>
                             )
                         })
                     }

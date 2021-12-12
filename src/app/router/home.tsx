@@ -12,6 +12,7 @@ import DoctorProfileView from "../module/user/doctor/patient";
 import PatientList from "../module/user/doctor/patientList";
 import RequestList from "../module/user/doctor/requestList";
 import FollowingDocList from "../module/user/doctor/followingDocList";
+import Advicelist from "../module/user/doctor/advicelist";
 
 const Drawer= createDrawerNavigator()
 
@@ -40,6 +41,9 @@ const DrawNav=()=>{
           <Drawer.Screen
           name="DocsFollowing"
           component={FollowingDocList} />
+          <Drawer.Screen
+          name="AdviceList"
+          component={Advicelist} />
       </Drawer.Navigator>
     )
 }
@@ -155,6 +159,7 @@ const SideBar =(p:DrawerContentComponentProps)=>{
             <DrawerItem 
               label={()=><Text>My Advices</Text>} 
               onPress={function (): void {
+                p.navigation.navigate('AdviceList')
               }}
               icon={
                 (p)=><Icon.Advice 

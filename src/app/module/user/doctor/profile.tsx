@@ -115,6 +115,7 @@ const ProfileDoc = (props: Props) => {
               shadowOffset : { width: 1, height: 10},
               backgroundColor:colors.buttonColor
             }}
+          Onpress={()=>props.navigation.navigate('DocsFollowing')}
             >
               <Icon.Doctor height={30}/>
             <Text>
@@ -211,6 +212,7 @@ const ProfileDoc = (props: Props) => {
               shadowOffset : { width: 1, height: 10},
               backgroundColor:colors.buttonColor
             }}
+            Onpress={()=> props.navigation.navigate('MyRequests')}
             >
               <Icon.Request height={30}/>
             <Text>

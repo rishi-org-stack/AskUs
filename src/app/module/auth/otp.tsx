@@ -14,6 +14,7 @@ import { VerifyOtp } from '../../../services'
 import idState from '../../state/id'
 import { getData, storeData } from '../../../cache/user'
 import tokenState from '../../state/token'
+import { forModalPresentationIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators'
 
 interface Props{
     navigation: StackNavigationProp<any,any>
@@ -47,8 +48,11 @@ function OTPScreen(p:Props): ReactElement {
         )
         
         if (posted){
-
+            console.log("token: ", data!['data']);
+            
             tokenState.token.set(data!['data'])
+            console.log("comparison: ", data!['data']== tokenState.get());
+            
             let storeRes = storeData(String(data!['data']))
             Promise.
                     resolve(storeRes).

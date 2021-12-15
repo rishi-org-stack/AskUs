@@ -89,7 +89,7 @@ const PatientShortCard = (props: Props) => {
                          <Wrapper row flex={1.5}>
                             <Wrapper flex={1} alignItems='center'>
                                 <Text>
-                                    {props.patient?.age.toString()}
+                                   {props.patient?.age.toString()}
                                 </Text>
                                 <Text>
                                     Age
@@ -97,7 +97,7 @@ const PatientShortCard = (props: Props) => {
                             </Wrapper>
                             <Wrapper flex={1} alignItems='center'>
                                 <Text>
-                                    {props.patient?.height.toString()}
+                                    9{/*props.patient?.height.toString()*/}
                                 </Text>
                                 <Text>
                                     height
@@ -105,7 +105,7 @@ const PatientShortCard = (props: Props) => {
                             </Wrapper>
                             <Wrapper flex={1} alignItems='center'>
                                 <Text>
-                                    {props.patient?.weight.toString()}
+                                   no{/*props.patient?.weight.toString()*/}
                                 </Text>
                                 <Text>
                                     Weight

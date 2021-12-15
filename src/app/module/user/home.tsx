@@ -8,6 +8,8 @@ import Icons from "../../../asset/index"
 import TouchableContainer from '../../../components/containers/TouchableWrapper'
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types'
 import { TopDownCard } from '../../components/cards/topDownCars'
+import { useQuery } from 'react-query'
+import { GetFollowedByPatients, GetUser } from '../../../services'
 interface Props {
     navigation: DrawerNavigationHelpers
 }
@@ -91,6 +93,25 @@ const adData =[
     }
 ]
 const Home = (props: Props) => {
+    //   if (res.isLoading){
+    //       return(
+    //           <Wrapper flex={1} backgoundColor={colors.background}>
+    //           <Text>
+    //                 loading.......
+    //           </Text>
+    //           </Wrapper>
+    //       )
+    //   }
+    //   if (res.isError){
+    //       return(
+    //                 <Wrapper flex={1} backgoundColor={colors.background}>
+    //                     <Text>
+    //                         error
+    //                     </Text>
+    //                 </Wrapper>
+    //       )
+        
+    //   }
     return (
         
         <Wrapper backgoundColor={colors.background} flex={1}>
@@ -105,6 +126,9 @@ const Home = (props: Props) => {
                     {
                         data.map((val,i)=>{ 
                             const [selected, setselected] = React.useState(false)
+                        //    console.log('====================================');
+                            // co nsole.log(res.data["data"]);
+                            // console.log('====================================');
                             return( 
                                 //Move it to another compoenent outside moodule dir
                                 <TouchableContainer 

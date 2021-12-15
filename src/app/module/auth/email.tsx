@@ -8,7 +8,7 @@ import Icon from "../../../asset";
 import { StackNavigationProp } from '@react-navigation/stack'
 import TouchableContainer from '../../../components/containers/TouchableWrapper'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { GetOtp } from '../../../services'
+import { GetFollowedByPatients, GetOtp, GetUser } from '../../../services'
 import { OtpRequest, VerifyOtpRequest } from '../../../types/interfaces'
 import idState from '../../state/id'
 interface Props {
@@ -44,6 +44,8 @@ function EmailScreen(p:Props): ReactElement {
             setposted(false)
         )
     },[posted])
+
+
     return (
         <Wrapper flex={1} backgoundColor={colors.background}>
             

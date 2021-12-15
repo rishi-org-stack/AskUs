@@ -6,6 +6,8 @@ import PatientShortCard from '../../../components/cards/patientShortCard';
 import { Patient } from '../../../../types/interfaces';
 import { ScrollView } from 'react-native';
 import AskUsHeader from '../../../components/header';
+import { useQuery } from 'react-query';
+import { GetFollowedByPatients } from '../../../../services';
 interface Props {
     navigation:DrawerNavigationHelpers;
 }
@@ -85,6 +87,21 @@ const data:Patient[]=[ {
 }
 ]
 const PatientList = (props: Props) => {
+    const [plist, setplist] = React.useState([])
+    React.useEffect(()=>{
+        console.log('====================================');
+        console.log(plist);
+        console.log('====================================')
+    },[plist])
+    const res=useQuery("getfollowedbyPatieints", GetFollowedByPatients,{
+        onSuccess:(d)=>{
+            d["data"]!=undefined?
+            setplist(d["data"]):null
+        }
+    })
+    console.log('=============data=======================');
+    console.log(res.data);
+    console.log('====================================')
     return (
         <Wrapper center flex={1} backgoundColor={colors.background}>
             <AskUsHeader nav={props.navigation}/>
@@ -93,10 +110,20 @@ const PatientList = (props: Props) => {
             </Text>
             <ScrollView >
                 {
+                    plist==undefined?
                     data.map((val,i)=>{
                         return(
                             <PatientShortCard
                              patient={val} 
+                             key={i.toString()+"_patient_card"}
+                            />
+                        )
+                    })
+                    :
+                    plist.map((val,i)=>{
+                        return(
+                            <PatientShortCard
+                             patient={val["user"]} 
                              key={i.toString()+"_patient_card"}
                             />
                         )

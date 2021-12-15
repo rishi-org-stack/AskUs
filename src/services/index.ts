@@ -4,10 +4,11 @@ import { Doctor, OtpRequest, VerifyOtpRequest } from '../types/interfaces'
  
 // define the api
 const api = create({
-  baseURL: "https://clever-monkey-73.loca.lt/api/v1",
+  baseURL: "https://itchy-horse-34.loca.lt/api/v1",
   headers:{
     "X-Client":"doctor",
-    "Content-Type":"application/json"
+    "Content-Type":"application/json",
+    "Authorization":"Bearer "+tokenState.token.get()
   }
 })
 // axios.defaults.baseURL="192.168.0.100:8080/api/v1"
@@ -58,8 +59,71 @@ export const UpdateUserDoctor= async (user:Doctor):Promise<any>=>{
               
 }
 
-export const GetUser= async():Promise<any>=>{
-  const response =await api.get("/user/",{
+export const GetUser= async ():Promise<any>=>{
+  const response=await api.get("/user/",)
+                  // user,
+                  // headers:
+                  //   {
+                  //     "Authorization":"Bearer "+tokenState.token.get()
+                  //   }
+                  // }
+                  // {
+                  // )
+  // if (response.ok) {
+    return response.data
+  // }
+              
+}
+
+// export const GetFollowedByPatients= async():Promise<any>=>{
+//   const response =await api.get("/user/fbp",{
+//     headers:
+//     {
+//       "Authorization":"Bearer "+tokenState.token.get()
+//     }
+//   })
+
+//   // if (response.ok) {
+//     return response.dat
+//   
+// }
+export const GetFollowedByPatients= async ():Promise<any>=>{
+  const response=await api.get("/user/fbp",)
+  // if (response.ok) {
+    return response.data
+  // }
+              
+}
+export const GetFollowedByDoctors= async():Promise<any>=>{
+  const response =await api.get("/user/fbd",{
+    headers:
+    {
+      "Authorization":"Bearer "+ tokenState.token.get()
+    }
+  })
+
+  if (response.ok) {
+    return response.data
+  }
+       
+}
+
+export const GetFollowingDoctors= async():Promise<any>=>{
+  const response =await api.get("/user/fd",{
+    headers:
+    {
+      "Authorization":"Bearer "+tokenState.token.get()
+    }
+  })
+
+  if (response.ok) {
+    return response.data
+  }
+       
+}
+
+export const SentToMe= async():Promise<any>=>{
+  const response =await api.get("/req/forme",{
     headers:
     {
       "Authorization":"Bearer "+tokenState.token.get()

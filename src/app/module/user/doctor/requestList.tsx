@@ -3,8 +3,10 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import { Wrapper } from '../../../../components'
 import TouchableContainer from '../../../../components/containers/TouchableWrapper'
+import { SentToMe } from '../../../../services'
 import RequestCard from '../../../components/cards/requestCard'
 import AskUsHeader from '../../../components/header'
+import tokenState from '../../../state/token'
 import { colors } from '../../../theme'
 
 interface Props {
@@ -20,6 +22,18 @@ const patientreqs=[
 ]
 const RequestList = (props: Props) => {
     const [docreq, setDocreq] = React.useState(true)
+    const [fdList, setfdList] = React.useState([])
+    React.useEffect(()=>{
+        Promise.resolve(SentToMe(tokenState.token.get())).then(d=>{
+        console.log('====================================');
+        console.log(d["data"]);
+        setfdList(d["data"])
+        console.log('====================================');
+    }).catch(e=>{
+        console.log({err:e});
+        
+    })
+    },[])
     return (
         <Wrapper
             flex={1}
@@ -66,20 +80,29 @@ const RequestList = (props: Props) => {
             </Wrapper>
             {
                 docreq?
-                <DocReq/>
+                DocReq(fdList)
                 :
-                <PatientReq/>
+                PatientReq(fdList)
 
             }
         </Wrapper>
     )
 }
 
-const DocReq =()=>{
+const DocReq =(list:never[])=>{
     return(
         <ScrollView>
             {
+                list==undefined?
                 docreqs.map((_,i)=>{
+                    return(
+                        <Wrapper margin={10} key={i.toString()+"_doctor_request_card"}>
+                            <RequestCard/>
+                        </Wrapper>
+                    )
+                })
+                :
+                list.map((_,i)=>{
                     return(
                         <Wrapper margin={10} key={i.toString()+"_doctor_request_card"}>
                             <RequestCard/>
@@ -91,11 +114,20 @@ const DocReq =()=>{
     )
 }
 
-const PatientReq =()=>{
+const PatientReq =(list:never[])=>{
     return(
         <ScrollView>
             {
+                list==undefined?
                 patientreqs.map((_,i)=>{
+                    return(
+                        <Wrapper margin={10} key={i.toString()+"_patient_request_card"}>
+                            <RequestCard/>
+                        </Wrapper>
+                    )
+                })
+                :
+                list.map((_,i)=>{
                     return(
                         <Wrapper margin={10} key={i.toString()+"_patient_request_card"}>
                             <RequestCard/>

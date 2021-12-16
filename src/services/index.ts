@@ -4,7 +4,7 @@ import { Doctor, OtpRequest, VerifyOtpRequest } from '../types/interfaces'
  
 // define the api
 const api = create({
-  baseURL: "https://itchy-horse-34.loca.lt/api/v1",
+  baseURL: "https://tasty-fireant-55.loca.lt/api/v1",
   headers:{
     "X-Client":"doctor",
     "Content-Type":"application/json",
@@ -87,8 +87,10 @@ export const GetUser= async ():Promise<any>=>{
 //     return response.dat
 //   
 // }
-export const GetFollowedByPatients= async ():Promise<any>=>{
-  const response=await api.get("/user/fbp",)
+export const GetFollowedByPatients= async (tk:string):Promise<any>=>{
+  const response=await api.get("/user/fbp",{},{headers:{
+    "Authorization":"Bearer "+tk
+  }})
   // if (response.ok) {
     return response.data
   // }
@@ -108,25 +110,22 @@ export const GetFollowedByDoctors= async():Promise<any>=>{
        
 }
 
-export const GetFollowingDoctors= async():Promise<any>=>{
-  const response =await api.get("/user/fd",{
-    headers:
-    {
-      "Authorization":"Bearer "+tokenState.token.get()
-    }
-  })
+export const GetFollowingDoctors= async(tk: string):Promise<any>=>{
+  const response =await api.get("/user/fd",{},{headers:{
+    "Authorization":"Bearer "+tk
+  }})
 
-  if (response.ok) {
+  // if (response.ok) {
     return response.data
-  }
+  // }
        
 }
 
-export const SentToMe= async():Promise<any>=>{
-  const response =await api.get("/req/forme",{
+export const SentToMe= async(tk: string):Promise<any>=>{
+  const response =await api.get("/req/forme",{},{
     headers:
     {
-      "Authorization":"Bearer "+tokenState.token.get()
+      "Authorization":"Bearer "+tk
     }
   })
 

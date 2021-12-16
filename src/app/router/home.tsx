@@ -21,7 +21,8 @@ const DrawNav=()=>{
       <Drawer.Navigator
         drawerContent={(p)=> <SideBar {...p}/>}
         screenOptions={{
-          headerShown:false
+          headerShown:false,
+          // drawerPosition:'right'
         }}
       >
         <Drawer.Screen

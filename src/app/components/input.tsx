@@ -44,15 +44,17 @@ const Input = React.forwardRef<TextInput, Props>((props, ref) => {
                     ref={ref}
                     content={props.content}
                     contentColor={props.contentColor}
-                    placeholderColor={"white"}
+                    placeholderColor={"#808080"}
                     style={{
-                        marginLeft: 10
+                        marginLeft: 10,
+    
                     }}
                     height={70}
                     width={props.width}
                     onChangeText={props.onChangeText}
                     maxLength={props.maxLength}
                     type={props.type}
+                
                 // flex={1}
                 />
             </Wrapper>

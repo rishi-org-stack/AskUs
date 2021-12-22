@@ -28,6 +28,7 @@ import Home from "./home.svg";
 import LogOut from "./logout.svg";
 import Plus from "./plus.svg";
 import Minus from "./minus.svg";
+import OTP_img from "./OTP_img.svg"
 export default {
     Ear,
     Alzheimer,
@@ -56,5 +57,6 @@ export default {
     Home,
     LogOut,
     Plus,
-    Minus
+    Minus,
+    OTP_img
 }

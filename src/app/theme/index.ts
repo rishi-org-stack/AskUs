@@ -5,5 +5,5 @@ const colors = {
 }
 
 export {
-    colors
+    colors 
 }

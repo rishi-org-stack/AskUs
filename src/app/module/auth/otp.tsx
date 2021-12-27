@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { Dimensions, TextInput } from 'react-native'
+import { Dimensions, TextInput ,Image} from 'react-native'
 import Text from '../../../components/text'
 import Wrapper from '../../../components/containers/wrapper'
 import Button from '../../components/button'
@@ -16,6 +16,7 @@ import { getData, storeData } from '../../../cache/user'
 import tokenState from '../../state/token'
 import { forModalPresentationIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators'
 
+
 interface Props{
     navigation: StackNavigationProp<any,any>
 }
@@ -31,7 +32,7 @@ function OTPScreen(p:Props): ReactElement {
     const pin4 = React.useRef<TextInput>(null)
     const pin5 = React.useRef<TextInput>(null)
     const pin6 = React.useRef<TextInput>(null)
-
+    const Height = Dimensions.get('window').height*0.15
     React.useEffect(() => {
 
         pin1.current?.focus()
@@ -83,16 +84,25 @@ function OTPScreen(p:Props): ReactElement {
     })
     return (
         <Wrapper flex={1} backgoundColor={colors.background}>
-            <Wrapper center alignItems='center'>
+            <Wrapper backgoundColor={colors.background}  height={Height} center alignItems='center'>
                 <Text
                     bold
                     large
                 >
-                    Welcome to AskUs
-
+                    Enter Verification Code
                 </Text>
             </Wrapper>
-            <Wrapper flex={1} center alignItems='center'>
+            <Wrapper center alignItems='center' marginB={50}>
+               <Icon.OTP_img height={150} width={200} />
+            </Wrapper>
+            <Wrapper flex={1} alignItems='center'>
+            <Text
+                    normal
+                    small
+                    style={{color:'#808080',marginBottom:30}}
+                >
+                    We have sent OTP to your Email
+                </Text>
                 <Wrapper row >
                     <Input
                         ref={pin1}
@@ -181,12 +191,13 @@ function OTPScreen(p:Props): ReactElement {
                             
                         }} />
                 </Wrapper>
-                <TouchableContainer 
+                <TouchableContainer
+                marginT={30} 
                     height={40} 
                     width={100} 
                     alignItems='center' 
                     centerMain 
-                    radius={10}
+                    radius={5}
                     marginR={30}
                     backgoundColor={colors.buttonColor}
                     rightComponent={
@@ -196,12 +207,12 @@ function OTPScreen(p:Props): ReactElement {
                         alignSelf:'flex-end'
                     }}
                     Onpress={()=>{
-                        mutation.mutate({"id": id, "otp": otp})
-                        
+                       // mutation.mutate({"id": id, "otp": otp})
+                       p.navigation.navigate('HomeRoute')
                     }}
                     >
                     <Text>
-                        Next
+                        Submit
                     </Text>
                 </TouchableContainer> 
                 

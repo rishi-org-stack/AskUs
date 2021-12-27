@@ -1,9 +1,9 @@
 import React, { ReactChildren } from 'react'
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
+import { StyleProp, StyleSheet, View, ViewStyle , Animated} from 'react-native'
 import { colors } from '../../app/theme';
 
 interface Props {
-    row?: boolean;
+    row?: boolean; 
     center?: boolean;
     centerV?: boolean;
     centerH?: boolean;
@@ -21,7 +21,7 @@ interface Props {
     marginT?: number;
     marginL?: number;
     marginR?: number;
-    height?: number| string;
+    height?: number| string | Animated.Value;
     width?: number| string;
     borderW?:number;
     borderB?:number;
@@ -33,8 +33,9 @@ interface Props {
     style?: StyleProp<ViewStyle>;
 }
 function Container(props: Props) {
+    console.log(props.height)
     return (
-        <View style={[
+        <Animated.View style={[
             props.row
             &&
             styles.row,
@@ -73,7 +74,7 @@ function Container(props: Props) {
             }
         ]} >
             {props.children}
-        </ View>
+        </Animated.View>
     )
 }
 

@@ -13,7 +13,7 @@ import { GetFollowedByPatients, GetUser } from '../../../services'
 interface Props {
     navigation: DrawerNavigationHelpers
 }
-
+ 
 const data=[
     {
         name:'Diet',
@@ -120,13 +120,13 @@ const Home = (props: Props) => {
             {/* </Wrapper> */}
             <ScrollView>
             
-            <Wrapper height={60} width='100%' center margin={10}>
+            <Wrapper height={80} width='100%' center margin={10}>
                 {/* TODO: make scroll vie a seprate compoennet such taht we need to pass only data and childeren compoennet */}
-                <ScrollView horizontal={true} >
+                <ScrollView horizontal={true} style={{marginRight:10}} >
                     {
                         data.map((val,i)=>{ 
                             const [selected, setselected] = React.useState(false)
-                        //    console.log('====================================');
+                        //console.log('====================================');
                             // co nsole.log(res.data["data"]);
                             // console.log('====================================');
                             return( 
@@ -144,7 +144,8 @@ const Home = (props: Props) => {
                                     radius={10}
                                     style={{
                                         marginRight:10,
-                                        backgroundColor:selected?colors.buttonColor:colors.lightColor
+                                        backgroundColor:selected?colors.buttonColor:colors.lightColor,
+                                        
                                 }}
                                 Onpress={()=>{
                                     setselected(!selected)
@@ -167,6 +168,7 @@ const Home = (props: Props) => {
                            return (
                             <TouchableContainer
                             key={i.toString()+"_card_advice"}
+                            style={{marginBottom:15}}
                         >
                             {/* <Card  
                                 marginB={10} 
@@ -187,9 +189,10 @@ const Home = (props: Props) => {
                             }/> */}
                             <TopDownCard 
                                 topComp={
-                                <TouchableContainer height={'15%'} >
-                                    <Text marginL={20}>
-                                       Dr ok
+                                <TouchableContainer  style={{width:"100%",flexDirection:"row"}}>
+                                    <Image source={require("./../../../asset/doctor.png")} style={{width:35,height:35,margin:10,marginLeft:20}} />
+                                    <Text style={{marginLeft:70,marginTop:-40,marginBottom:15}}>
+                                       Dr OK
                                     </Text>
                                 </TouchableContainer>
                                 }
@@ -198,18 +201,25 @@ const Home = (props: Props) => {
                                         height={'15%'} 
                                         center
                                         >
-                                        <Text marginL={20}> Nov 30 </Text>
+                                        <Text marginL={20} style={{alignSelf:"flex-end",marginRight:10,fontWeight:"100",fontSize:10}}> Nov 30 </Text>
                                     </Wrapper>
                                 }
                                 marginB={10}
                             >
                                 <TouchableContainer 
-                                    height={"70%"} 
+                                    height={"55%"} 
                                     width={"100%"}
+                                    marginT={6}
                                     LeftComponent={<Icons.Advice height={'100%'} width={'100%'}/>}
                                     >
-                                    pllp
+                                   <Text style={{margin:3}}>
+                                       Heading
+                                   </Text>
+                                    <Text style={{fontWeight:"normal",color:"#808080",fontSize:13,width:"85%"}}>
+                                    This the place where we find the advice of given by the Doctor who posted this article
+                                </Text>
                                 </TouchableContainer>
+                               
                             </TopDownCard>
                         </TouchableContainer>
                             )

@@ -20,7 +20,7 @@ const AskUsHeader = (props: Props) => {
     //     setTimeout(setIsNotif(!isNotif),5000)
     // },[isNotif])
     return (
-        <Wrapper row height={50} alignItems='center'>
+        <Wrapper row height={60} alignItems='center' style={{justifyContent:"space-around",elevation:13}}>
             <TouchableContainer 
                 height={40} 
                 marginL={10} 
@@ -41,9 +41,11 @@ const AskUsHeader = (props: Props) => {
                     props.onPressInput();
                     
                 }}>
-                    <Wrapper row radius={35} style={{
+                    <Wrapper row radius={5} style={{
                         borderWidth:1,
-                        borderColor:"white"
+                        borderColor:"#808080",
+                        width:'90%',
+                        alignSelf:"center"
                     }}>
                         <Wrapper height={35} alignItems='center' center width={35} radius={35}>
                            
@@ -52,11 +54,12 @@ const AskUsHeader = (props: Props) => {
                         <Wrapper flex={1}>
                             <TextInput 
                              ref={inputPin}
-                                placeholder="ok" 
-                                placeholderTextColor="white" 
+                                placeholder="Search" 
+                                placeholderTextColor="#808080" 
                                 style={{
                                     height:35,
-                                    color:"white"
+                                    color:"white",
+                                  
                             }}/>
                         </Wrapper>
                         
@@ -64,7 +67,7 @@ const AskUsHeader = (props: Props) => {
                     
                 </TouchableOpacity>
             </Wrapper>
-            <TouchableContainer height={'100%'} width={30} centerMain>
+            <TouchableContainer height={'100%'} width={30} style={{marginRight:10}} centerMain>
                 <Icons.Bell  height={20} width={20}/>
             </TouchableContainer>
         </Wrapper>

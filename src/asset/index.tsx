@@ -30,6 +30,8 @@ import Plus from "./plus.svg";
 import Minus from "./minus.svg";
 import Up from "./up.svg";
 import Down from "./down.svg"
+import OTP_img from "./OTP_img.svg"
+
 export default {
     Ear,
     Alzheimer,
@@ -61,4 +63,6 @@ export default {
     Minus,
     Up,
     Down
+    OTP_img
+
 }

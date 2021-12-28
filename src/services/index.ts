@@ -4,7 +4,7 @@ import { Doctor, OtpRequest, VerifyOtpRequest } from '../types/interfaces'
  
 // define the api
 const api = create({
-  baseURL: "https://tasty-fireant-55.loca.lt/api/v1",
+  baseURL: "https://massive-moth-82.loca.lt/api/v1",
   headers:{
     "X-Client":"doctor",
     "Content-Type":"application/json",

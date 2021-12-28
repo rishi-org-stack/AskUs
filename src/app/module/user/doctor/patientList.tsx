@@ -111,6 +111,7 @@ const PatientList = (props: Props) => {
                     data.map((val,i)=>{
                         return(
                             <PatientShortCard
+                            onPress={()=>props.navigation.navigate('PatientViewforDoc')}
                              patient={val} 
                              key={i.toString()+"_patient_card"}
                             />
@@ -120,8 +121,10 @@ const PatientList = (props: Props) => {
                     plist.map((val,i)=>{
                         return(
                             <PatientShortCard
-                             patient={val["user"]} 
+                            onPress={()=>props.navigation.navigate('PatientViewforDoc')}
+                            patient={val["user"]} 
                              key={i.toString()+"_patient_card"}
+                        
                             />
                         )
                     })

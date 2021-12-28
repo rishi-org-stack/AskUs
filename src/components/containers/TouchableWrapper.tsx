@@ -38,9 +38,11 @@ function TouchableContainer(p: TouchProps): ReactElement {
         >
             {
                 p.LeftComponent !== undefined &&
-                <Container flex={1} center>
-                   { p.LeftComponent}
-                </Container>
+                // <Container flex={1} center>
+                //    {
+                    p.LeftComponent
+                    // }
+                // {/* </Container> */}
             }
             <Container flex={2}center={p.centerMain} alignItems={p.alignItems}>
             {
@@ -59,16 +61,16 @@ function TouchableContainer(p: TouchProps): ReactElement {
             </Container>
             {
                 p.rightComponent !== undefined &&
-                <Container 
-                    flex={1} 
-                    center 
-                    marginT={10} 
-                    marginB={10} 
-                    >
-                    {
+                // <Container 
+                //     flex={1} 
+                //     center 
+                //     marginT={10} 
+                //     marginB={10} 
+                //     >
+                    
                         p.rightComponent
-                    }
-                </Container>
+                    
+                // </Container>
             }
         </TouchableOpacity>
     )

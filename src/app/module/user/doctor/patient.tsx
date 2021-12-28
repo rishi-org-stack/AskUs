@@ -9,7 +9,9 @@ import {Dimensions, ScrollView, StyleSheet, TouchableOpacity} from 'react-native
 import { TopDownCard } from '../../../components/cards/topDownCars';
 import TouchableContainer from '../../../../components/containers/TouchableWrapper';
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
-
+import SymptomCard from '../../../components/cards/symptomCard';
+import Icon from "../../../../asset"
+import { FlatList } from 'react-native-gesture-handler';
 const symptoms=[
   {
     symptom:"pain"
@@ -124,193 +126,225 @@ const advices=[
 interface Props {
   navigation:DrawerNavigationHelpers
 }
-const DoctorProfileView = (props: Props) => {
+const DoctorPatientProfileView = (props: Props) => {
   const [history,setHistory]=React.useState(true)
+  const [historyClicked, sethistoryClicked] = React.useState(false)
+  const [adviceClicked, setadviceClicked] = React.useState(false)
   return (
-    <Wrapper backgoundColor={colors.background} flex={1}>
-      {/* // header with back icon */}
-      <Wrapper row height={30} alignItems="center" width="100%">
-        <TouchableOpacity onPress={()=>{
-          props.navigation.navigate('Home')
-        }}>
-          <Icons.Left height={20} width={20} />
-        </TouchableOpacity>
-      <Wrapper flex={1} />
-    </Wrapper>
-      {/* header ends */}
+    <Wrapper backgoundColor={colors.background} flex={1} alignItems='center'>
+    <ScrollView style={{flex:1}}>
+      <Wrapper height={50} width={50} radius={10} backgoundColor='red'>
 
-      {/* body */}
-      <Wrapper flex={1} row backgoundColor={colors.lightColor}>
-        <Wrapper flex={1} 
-                backgoundColor={colors.background} 
-                margin={20} 
-                radius={20}>
-
-        </Wrapper>
-        <Wrapper flex={1} marginT={20} marginB={20}>
-          <Text marginB={5}>
-            Name:{"  "}Name is name
-          </Text>
-          <Text marginB={5}>
-            Age:{"  "}56{"\t\t\t"} Exp:{"  "}32
-          </Text>
-          <Text>
-            Symtoms: 
-          </Text>
-          <ScrollView>
-          {
-              symptoms.map((val,i)=>{
-                  return(
-                    
-                      <Wrapper
-                       backgoundColor={colors.buttonColor} 
-                       style={{
-                          alignSelf: "baseline"
-                        }}
-                        radius={10}
-                        marginB={5}
-                        marginT={5}
-                        key={i.toString()+"_symptom_card"}
-                      >
-                        <Text marginR={30}>
-                          {"\t\t\t"+val.symptom}
-                        </Text>
-                      </Wrapper>
-                    
-                    
-                  )
-                })
-           
-          }
-          </ScrollView>
-        </Wrapper>
       </Wrapper>
-      <Wrapper flex={1.5} backgoundColor={colors. background}>
-        {/* TODO: make report and personnel advice clickable and change personnel advice icon ,content should change on clicking both */}
-        <Wrapper 
-          height={60} 
-          width='100%' 
-          backgoundColor={colors.buttonColor} radius={10} style={{
-            borderWidth:1,
-            borderColor:"white"
-          }}
-          row>
-            <TouchableOpacity style={{
-              flex:1,
-              alignItems:'center'
-            }}
-            onPress={()=>setHistory(true)}
-            >
-                <Icons.History height={40}/>
-                <Text verySmall bold>
-                    Reports
-                </Text>
-            </TouchableOpacity>
-
-
-            <TouchableOpacity style={{
-              flex:1,
-              alignItems:'center',
-              borderLeftWidth:1,
-              borderColor:'white'
-            }}
-            onPress={()=>setHistory(false)}
-            >
-              <Icons.Advice height={40}/>
-              <Text verySmall bold>
-                  Personnel Advices
-              </Text>
-            </TouchableOpacity>
-          </Wrapper>
-          {
-            history?<HistoryView/>
-            :
-            <AdviceView/>
-          }
+      <Text bold large>
+          Jane WiliamSon
+      </Text>
+      <Wrapper height={80} row width={'90%'}>
+        <Wrapper flex={1} alignItems='center'>
+          <Text marginT={20}>
+            Age
+          </Text>
+          <Text marginT={10}>
+            34
+          </Text>
+        </Wrapper>
+        <Wrapper flex={1} alignItems='center'>
+          <Text marginT={20}>
+            Height
+          </Text>
+          <Text marginT={10}>
+            34
+          </Text>
+        </Wrapper>
+        <Wrapper flex={1} alignItems='center'>
+          <Text marginT={20}>
+            Weight
+          </Text>
+          <Text marginT={10}>
+            34
+          </Text>
+        </Wrapper>
+        <Wrapper flex={1} alignItems='center'>
+          <Text marginT={20}>
+            Blood
+          </Text>
+          <Text marginT={10}>
+            34
+          </Text>
+        </Wrapper>
+        
       </Wrapper>
+
+      <Wrapper width={'90%'} marginT={20}>
+        <Text>
+          Chronic
+        </Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {
+            symptoms.map((_,i)=>{
+              return(
+                <Wrapper marginR={10}>
+                  <SymptomCard key={i.toString()}/>
+                </Wrapper>
+              )
+            })
+          }
+        </ScrollView>
+      </Wrapper>
+
+      <TouchableContainer
+       width={'90%'} 
+       radius={20} 
+       height={60} 
+       centerMain
+       marginT={20}
+       backgoundColor={colors.lightColor}
+       Onpress={()=>sethistoryClicked(!historyClicked)}
+       rightComponent={
+         <Wrapper
+          height={40}
+          // backgoundColor='red' 
+          width={40}
+          marginR={20}
+          center
+          alignItems='center'
+          style={{alignSelf:'center'}}
+          >
+            {
+              historyClicked?<Icon.Down height={13} width={15}/>:
+              <Icon.Up height={13} width={15}/>
+
+            }
+         </Wrapper>
+       }
+       >
+         <Text marginL={20}>
+           Treatment history
+         </Text>
+      
+      </TouchableContainer>
+       {
+         historyClicked&&
+         <HistoryView/>
+       }
+      <TouchableContainer
+       width={'90%'} 
+       radius={20} 
+       height={60} 
+       centerMain
+       marginT={20}
+       backgoundColor={colors.lightColor}
+       rightComponent={
+         <Wrapper
+          height={40}
+          // backgoundColor='red' 
+          width={40}
+          marginR={20}
+          center
+          alignItems='center'
+          style={{alignSelf:'center'}}
+          >
+            <Icon.Up height={13} width={15}/>
+         </Wrapper>
+       }
+       >
+         <Text marginL={20}>
+           Advice
+         </Text>
+      
+      </TouchableContainer>
+      </ScrollView>
     </Wrapper>
   );
 };
 // TODO needs fixationin style
-const HistoryView  =()=>{
+
+
+const HistoryView=()=>{
   return(
-    <ScrollView>
+    // <ScrollView
+    //   style={{
+    //     width:"100%",
+    //     // flex:1,
+    //     marginTop:10
+    //     // alignSelf:'baseline'
+    //   }}
+    //   contentContainerStyle={{
+    //     alignItems:'center'
+    //   }}
+    // >
+    //   {
+    //     symptoms.map((_,i)=>{
+    //       return(
+    //             <Wrapper
+    //             key={i.toString()+"_history_card"}
+    //              width={'90%'} 
+    //              backgoundColor='red' 
+    //              marginB={20}>
+    //               <Text>
+    //                 Mar 11, 2020
+    //               </Text>
+    //               <Text bold large>
+    //                 Genral
+    //               </Text>
+    //               <Wrapper row>
+    //                 <Wrapper 
+    //                   marginT={20} 
+    //                   height={30} 
+    //                   width={30}
+    //                   radius={5} 
+    //                   backgoundColor='pink'>
 
-      <Wrapper row style={{
-      flexWrap: 'wrap',
-      }}
-      >
-      {
-        headers.map((val,i)=>{
-          return(
-            <TouchableContainer
-             height={200} 
-             width={Dimensions.get('screen').width/2-10} 
-             marginR={10} >
-              <Text>
-                {val.header}
-              </Text>
-              <Wrapper
-                height={150} 
-                width={'100%'}
-                backgoundColor='red'/>
-            </TouchableContainer>
-          )
-        })
-      }
-      </Wrapper>
-    </ScrollView>
+    //                 </Wrapper>
+    //                 <Text 
+    //                   marginL={10} 
+    //                   bold 
+    //                   large 
+    //                   style={{alignSelf:'center'}}>
+    //                     Dr hu na mishra
+    //                 </Text>
+    //               </Wrapper>
+    //             </Wrapper>
+    //       )
+    //     })
+    //   }
+      
+    //  </ScrollView>
+    <FlatList
+    data={symptoms}
+    renderItem={()=>
 
-  )
-}
+      <Wrapper
+                // key={i.toString()+"_history_card"}
+                 width={'90%'} 
+                 backgoundColor='red' 
+                 marginB={20}>
+                  <Text>
+                    Mar 11, 2020
+                  </Text>
+                  <Text bold large>
+                    Genral
+                  </Text>
+                  <Wrapper row>
+                    <Wrapper 
+                      marginT={20} 
+                      height={30} 
+                      width={30}
+                      radius={5} 
+                      backgoundColor='pink'>
 
-const AdviceView=()=>{
-  return(
-    <ScrollView
-      style={{
-        flex:1,
-        marginTop:10
-      }}
-    >
-      {
-        advices.map((adv,i)=>{
-          return(
-            <TopDownCard
-              marginB={10} 
-              header={adv.header} 
-              content={adv.content}
-              topComp={
-                <Wrapper height={30}
-                  width='90%'
-                  style={{
-                    borderBottomWidth:1,
-                    borderColor:'white',
-                    alignSelf:'center'
-                  }}
-                  // center
-                  alignItems='flex-start'
-                  row
-                  >
-                    <Text marginR={10}>
-                      Dr: delhi wale
-                    </Text>
-                    <Text>
-                      posted on: 9/9/21
+                    </Wrapper>
+                    <Text 
+                      marginL={10} 
+                      bold 
+                      large 
+                      style={{alignSelf:'center'}}>
+                        Dr hu na mishra
                     </Text>
                   </Wrapper>
-              }
-              leftComp={
-                <Wrapper height='100%' width='100%' backgoundColor='green'>
-
                 </Wrapper>
-              }
-            />
-          )
-
-        })
-      }
-      
-    </ScrollView>
+    }
+    />
   )
 }
-export default DoctorProfileView;
+export default DoctorPatientProfileView;

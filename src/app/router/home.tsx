@@ -8,11 +8,11 @@ import { colors } from "../theme";
 import { ScrollView } from "react-native-gesture-handler";
 import ProfileDoc from "../module/user/doctor/profile";
 import TouchableContainer from "../../components/containers/TouchableWrapper";
-import DoctorProfileView from "../module/user/doctor/patient";
 import PatientList from "../module/user/doctor/patientList";
 import RequestList from "../module/user/doctor/requestList";
 import FollowingDocList from "../module/user/doctor/followingDocList";
 import Advicelist from "../module/user/doctor/advicelist";
+import DoctorPatientProfileView from "../module/user/doctor/patient";
 
 const Drawer= createDrawerNavigator()
 
@@ -45,6 +45,9 @@ const DrawNav=()=>{
           <Drawer.Screen
           name="AdviceList"
           component={Advicelist} />
+          <Drawer.Screen
+          name="PatientViewforDoc"
+          component={DoctorPatientProfileView} />
       </Drawer.Navigator>
     )
 }

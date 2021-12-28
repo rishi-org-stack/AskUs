@@ -6,6 +6,7 @@ import { colors } from '../../theme'
 import { Patient } from '../../../types/interfaces'
 interface Props {
     onPressAddNote?:()=>void;
+    onPress:()=>void;
     onPressRemove?:()=>void;
     patient?:Patient
 }
@@ -21,6 +22,7 @@ const PatientShortCard = (props: Props) => {
                  alignSelf:'center'
              }}
              margin={10}
+             Onpress={()=>props.onPress()}
              >
                  <Wrapper
                     width={'100%'}
